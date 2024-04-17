@@ -5,8 +5,8 @@ let guildScore = 0;
 let guildPerformance = 0;
 
 const Guilds = {
-    "Guilded" : {
-        "Members" : [
+    "Guilded" : { // Testing
+        "Members" : [ // Ignore this, this is just some small random list of people I am or was close to for sometime, oh and I'm in here :partying_face:
             "66471",    // Cyphe Mercury (ARG)
             "37932",    // Mystifical07 (ARG)
             "207094",   // Hiso
@@ -25,6 +25,8 @@ const Guilds = {
         ]
     },
     "ARG" : {
+        "Name": "Ascension : Rhythm Games",
+        "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)",
         "Members" : [
             "66471",
             "37932",
@@ -33,6 +35,8 @@ const Guilds = {
         ]
     },
     "ESV" : {
+        "Name": "Everything Scroll Velocity",
+        "Desc":"",
         "Members" : [
             "53425",
             "345922",
@@ -50,6 +54,8 @@ const Guilds = {
         ]
     },
     "ATP" : {
+        "Name": "Auto Taco Pet (idk)",
+        "Desc":"",
         "Members" : [
             "312737",
             "97620",
@@ -68,11 +74,15 @@ const Guilds = {
         ]
     },
     "FQH" : {
+        "Name": "Funny Quarter House (idk)",
+        "Desc":"",
         "Members" : [
             "45749"
         ]
     },
     "ERA" : {
+        "Name": "Eat Red Alligators (idk)",
+        "Desc":"",
         "Members" : [
             "74949",
             "3455",
@@ -91,6 +101,8 @@ const Guilds = {
         ]
     },
     "ABSR" : {
+        "Name": "A Bunny Shoots Reindeer (idk)",
+        "Desc":"",
         "Members" : [
             "180435",
             "3233",
@@ -98,6 +110,8 @@ const Guilds = {
         ]
     },
     "TC" : {
+        "Name": "TacoCat (idk)",
+        "Desc":"",
         "Members" : [
             "103197",
             "95481",
@@ -110,20 +124,21 @@ const Guilds = {
     }
 }
 
-function getScores(list = undefined) {
-  const guilded = [].concat(Guilds.ARG.Members, Guilds.ESV.Members, Guilds.ATP.Members, Guilds.FQH.Members, Guilds.ERA.Members, Guilds.ABSR.Members, Guilds.TC.Members)
+// Creates the users and calculates the guild scores
+function getScores(list = undefined /* Custom user list for "usernames" search bar */) {
+  const guilded = [].concat(Guilds.ARG.Members, Guilds.ESV.Members, Guilds.ATP.Members, Guilds.FQH.Members, Guilds.ERA.Members, Guilds.ABSR.Members, Guilds.TC.Members) // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
   const usernames = ((list) ? list : (document.getElementById('Guilds').value) ? Guilds[document.getElementById('Guilds').value].Members : guilded);//document.getElementById("usernames").value.split(",");
   const resultsDiv = document.getElementById("results");
   const guildInfo = document.getElementById("guildInfoContent");
   guildInfo.innerHTML = "";
   resultsDiv.innerHTML = "";
 
-  guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "All / Custom" ;
-  users = [];
-  guildScore = 0;
-  guildPerformance = 0;
+  guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "All / Custom" ; // Name for guild info
+  users = []; // Users in guild / are loaded
+  guildScore = 0; // Total score
+  guildPerformance = 0; // Custom performance system
 
-  performances = [];
+  let performances = [];
 
   usernames.forEach(async (username) => {
     let index = 0;
@@ -176,6 +191,7 @@ function getScores(list = undefined) {
     }    
 }
 
+// 1000 -> 1k || 1000000 -> 1m || etc.
 function formatNumber(number, zeros = 0) {
     if (number === 0) return "0";
   
@@ -194,6 +210,7 @@ function formatNumber(number, zeros = 0) {
     return Math.round(absNumber * Math.pow(10, zeros)) / Math.pow(10, zeros);
 }
 
+// TODO: Simplify into 1 function for the stages
 function getRank(value) {
     const ranks = [
       'Soulless',
@@ -259,6 +276,7 @@ function getRank(value) {
     return [ranks[index], a];
   }
 
+// User data
 class User {
     constructor(data, url, guild) {
         // Info
@@ -301,6 +319,7 @@ class User {
         this.profile = `https://quavergame.com/user/${this.username}`;
     }
 
+    // Creates the user thingyy...
     createUserUI() {
         const results = document.getElementById("results");
         results.innerHTML += 
