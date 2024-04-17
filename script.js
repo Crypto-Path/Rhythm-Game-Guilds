@@ -5,7 +5,9 @@ let guildScore = 0;
 let guildPerformance = 0;
 
 const Guilds = {
-    "Guilded" : { // Testing
+    "" : { // Testing
+        "Name": "All / Custom",
+        "Desc": "",
         "Members" : [ // Ignore this, this is just some small random list of people I am or was close to for sometime, oh and I'm in here :partying_face:
             "66471",    // Cyphe Mercury (ARG)
             "37932",    // Mystifical07 (ARG)
@@ -31,7 +33,8 @@ const Guilds = {
             "66471",
             "37932",
             "207094",
-            "275805"
+            "275805",
+            "132338"
         ]
     },
     "ESV" : {
@@ -45,7 +48,6 @@ const Guilds = {
             "659573",
             "653123",
             "599944",
-            "369530",
             "1223",
             "332660",
             "242639",
@@ -54,7 +56,7 @@ const Guilds = {
         ]
     },
     "ATP" : {
-        "Name": "Auto Taco Pet (idk)",
+        "Name": "Association of Tennis Professionals",
         "Desc":"",
         "Members" : [
             "312737",
@@ -70,11 +72,39 @@ const Guilds = {
             "82620",
             "44614",
             "239463",
-            "293151"
+            "293151",
+            "155537",
+            "98246",
+            "130540",
+            "159909",
+            "476867",
+            "264505",
+            "369530",
+            "140250",
+            "52842",
+            "114460",
+            "131754",
+            "353767",
+            "267194",
+            "143571",
+            "4665",
+            "177732",
+            "129926",
+            "63656",
+            "127730",
+            "259321",
+            "1005",
+            "145838",
+            "125703",
+            "109839",
+            "28014",
+            "174554",
+            "19735",
+            "351304",
         ]
     },
     "FQH" : {
-        "Name": "Funny Quarter House (idk)",
+        "Name": "Furry Quaver Hideout",
         "Desc":"",
         "Members" : [
             "45749"
@@ -101,7 +131,7 @@ const Guilds = {
         ]
     },
     "ABSR" : {
-        "Name": "A Bunny Shoots Reindeer (idk)",
+        "Name": "Act Broke Stay Rich",
         "Desc":"",
         "Members" : [
             "180435",
@@ -110,7 +140,7 @@ const Guilds = {
         ]
     },
     "TC" : {
-        "Name": "TacoCat (idk)",
+        "Name": "Touhou Cafe",
         "Desc":"",
         "Members" : [
             "103197",
@@ -133,7 +163,7 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
   guildInfo.innerHTML = "";
   resultsDiv.innerHTML = "";
 
-  guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "All / Custom" ; // Name for guild info
+  guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "A/C"; // Name for guild info
   users = []; // Users in guild / are loaded
   guildScore = 0; // Total score
   guildPerformance = 0; // Custom performance system
@@ -167,13 +197,18 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
       guildPerformance = tempPerformance;
 
       let playCount = 0;
+      let totalAcc = 0;
       users.forEach((user) => {
         playCount += user.playCount;
+        totalAcc += user.overallAccuracy;
       })
       guildInfo.innerHTML = 
-      `<h1>Guild (${guild})</h1>
+      `<h1>${(document.getElementById('Guilds').value != "") ? Guilds[document.getElementById('Guilds').value].Name : "All / Custom"} (${guild})</h1>
+      <br><a class="guild-desc">${Guilds[document.getElementById('Guilds').value].Desc}</a>
+      <br>
       <br><h2>Stats</h2>Overall Performance: ${formatNumber(guildPerformance)}
       <br>Overall Score: ${formatNumber(guildScore)}
+      <br>Overall Acc: ${formatNumber(totalAcc / users.length, 4)}%
       <br>Members: ${formatNumber(users.length)}
       <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})`;
     } catch (error) {
