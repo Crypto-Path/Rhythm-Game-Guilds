@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quaver Guilds</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="BackgroundContainer">
+        <div id="Background"></div>
+        <div class="overlay"></div>
+    </div>
+    <h1>Quaver Guilds</h1>
+    <div id="Search">
+        <p>Enter usernames separated by commas (e.g., user1, user2, user3)<br>(for custom only):</p>
+        <select id="Guilds" onselect="getScores()">
+            <option value="">-- Select Clan --</option>
+            <option value="ARG">ARG</option>
+            <option value="ESV">ESV</option>
+            <option value="ATP">ATP</option>
+            <option value="FQH">FQH</option>
+            <option value="ERA">ERA</option>
+            <option value="ABSR">ABSR</option>
+            <option value="TC">TC</option>
+          </select>
+          <br> <br>
+        <input type="text" id="usernames" placeholder="Usernames">
+        <button onclick="getScores((document.getElementById('usernames').value) ? document.getElementById('usernames').value.split(',') : undefined)">Load Users</button>
+        <button onclick="setBackground()">New Background</button>
+        <br><br>
+        <div>
+            <!-- Grid view and Tile view options -->
+            <button class="option gone" id="gridViewBtn">Grid View</button>
+            <button class="option gone" id="tileViewBtn">Tile View</button>
+        </div>
+        
+        <!-- Additional options for Tile view -->
+        <div id="tileOptions" style="margin-top: 16px; display: none;">
+            <button class="option gone" id="simpleViewBtn">Simple</button>
+            <button class="option gone" id="detailedViewBtn">Detailed</button>
+            <button class="option gone" id="extraViewBtn">Custom</button>
+        </div>
+    </div>
+    <div class="container-guild">
+        <div id="results"></div>
+        <div id="guildInfo">
+            <div id="guildInfoContent" class="box-shadow">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setBackground();
+    });
+    let id = 0;
+    
+    function setBackground() {
+        var randomNumber = Math.floor(Math.random() * 40000); // Generate a random number between 0 and 39999
+        var imageUrl = "https://cdn.quavergame.com/mapsets/" + randomNumber + ".jpg";
+        id = randomNumber;
+    
+        var img = new Image();
+        img.onload = function() {
+            document.getElementById("Background").style.backgroundImage = "url('" + imageUrl + "')";
+        };
+        img.onerror = function() {
+            setBackground(); // Retry if image not found
+        };
+        img.src = imageUrl;
+    }
+  </script>
+  <script>
+    let tiled = "Custom";
+    document.getElementById("gridViewBtn").addEventListener("click", function() {
+      document.getElementById("tileOptions").style.display = "none";
+      document.getElementById("results").classList.add("grid")
+      gridify("user");
+      gridify("user-name");
+      gridify("user-pfp");
+      gridify("user-info-basic") ;
+      simple();
+    });
+
+    document.getElementById("tileViewBtn").addEventListener("click", function() {
+        degridify()
+        document.getElementById("tileOptions").style.display = "block";
+        switch(tiled) {
+            case "Simple":
+                simple();
+                break;
+            case "Detailed":
+                detailed();
+                break;
+            case "Custom":
+                custom();
+                break;
+        }
+    });
+
+    document.getElementById("simpleViewBtn").addEventListener("click", function() {
+        simple();
+        tiled = "Simple"
+    });
+
+    document.getElementById("detailedViewBtn").addEventListener("click", function() {
+         detailed();
+         tiled = "Detailed"
+    });
+
+    document.getElementById("extraViewBtn").addEventListener("click", function() {
+        custom();
+        tiled = "Custom";
+    });
+
+    function gridify(className) {
+        const objects = document.getElementsByClassName(className);
+        for (let i = 0; i < objects.length; i++) {
+            const object = objects[i];
+            if (!object.classList.contains("grid")) {
+                object.classList.add("grid");
+            }
+        }
+    }
+
+    function degridify(className) {
+        const objects = document.getElementsByClassName("grid");
+        for (let i = 0; i < objects.length; i) {
+            const object = objects[0];
+            object.classList.remove("grid");
+        }
+    }
+
+    function simple() {
+        const details = document.getElementsByClassName("user-score");
+        for (let i = 0; i < details.length; i++) {
+            const detail = details[i];
+            if (!detail.classList.contains("gone")) {
+                detail.classList.add("gone");
+            }
+        }    
+    }
+
+    function detailed() {
+        const users = document.getElementsByClassName("user");
+        for (let i = 0; i < users.length; i++) {
+            const user = users[i];
+            user.children[1].classList.remove("gone")
+            if (!user.children[2].classList.contains("gone")) {
+                user.children[2].classList.add("gone");
+            }
+        }   
+    }
+
+    function custom() {
+        const details = document.getElementsByClassName("user-score");
+        for (let i = 0; i < details.length; i++) {
+            const detail = details[i];
+            if (detail.classList.contains("gone")) {
+                detail.classList.remove("gone");
+            }
+        }    
+    }
+  </script>
+</body>
+</html>
