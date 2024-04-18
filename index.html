@@ -12,52 +12,63 @@
         <div class="overlay"></div>
     </div>
     <h1>Quaver Guilds</h1>
-    <div id="Search" class="box-shadow">
-        <p>Enter usernames separated by commas (e.g., user1, user2, user3)<br>(for custom only):</p>
-        <select id="Guilds">
-            <option value="">Custom</option>
-            <option value="ARG">ARG</option>
-            <option value="ESV">ESV</option>
-            <option value="ATP">ATP</option>
-            <option value="FQH">FQH</option>
-            <option value="ERA">ERA</option>
-            <option value="ABSR">ABSR</option>
-            <option value="TC">TC</option>
-            <option value="BOB">BOB</option>
-        </select>
+    <div class="flex">
+        <div class="box-shadow Search">
+            <p>Enter usernames separated by commas (e.g., user1, user2, user3)<br>(for custom only):</p>
+            <select id="Guilds">
+                <option value="">Custom</option>
+                <option value="ARG">ARG</option>
+                <option value="ESV">ESV</option>
+                <option value="ATP">ATP</option>
+                <option value="FQH">FQH</option>
+                <option value="ERA">ERA</option>
+                <option value="ABSR">ABSR</option>
+                <option value="TC">TC</option>
+                <option value="BOB">BOB</option>
+            </select>
 
-        <select id="sortSelect">
-            <option value="Username">Username</option>
-            <option value="Performance">Performance</option>
-            <option value="Accuracy">Accuracy</option>
-            <option value="Score">Score</option>
-            <option value="Plays">Play Count</option>
-            <option value="Rating">Rating</option>
-            <option value="Bonus">Bonus</option>
-            <option value="Consistency">Consistency</option>
-            <option value="Value">Value</option>
-        </select>
+            <select id="sortSelect">
+                <option value="Username">Username</option>
+                <option value="Performance">Performance</option>
+                <option value="Accuracy">Accuracy</option>
+                <option value="Score">Score</option>
+                <option value="Plays">Play Count</option>
+                <option value="Rating">Rating</option>
+                <option value="Bonus">Bonus</option>
+                <option value="Consistency">Consistency</option>
+                <option value="Value">Value</option>
+            </select>
 
-        <select id="ascdesc">
-            <option value="Ascending">Ascending</option>
-            <option value="Descending">Descending</option>
-        </select>
-        <br><br>
-        <input type="text" id="usernames" placeholder="Usernames">
-        <button onclick="getScores((document.getElementById('usernames').value) ? document.getElementById('usernames').value.split(',') : undefined)">Load Users</button>
-        <button onclick="setBackground()">New Background</button>
-        <br><br>
-        <div>
-            <!-- Grid view and Tile view options -->
-            <button class="option gone" id="gridViewBtn">Grid View</button>
-            <button class="option gone" id="tileViewBtn">Tile View</button>
+            <select id="ascdesc">
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+            </select>
+            <br><br>
+            <input type="text" id="usernames" placeholder="Usernames">
+            <button onclick="getScores((document.getElementById('usernames').value) ? document.getElementById('usernames').value.split(',') : undefined)">Load Users</button>
+            <button onclick="setBackground()">New Background</button>
+            <br><br>
+            <div>
+                <!-- Grid view and Tile view options -->
+                <button class="option gone" id="gridViewBtn">Grid View</button>
+                <button class="option gone" id="tileViewBtn">Tile View</button>
+            </div>
+            
+            <!-- Additional options for Tile view -->
+            <div id="tileOptions" style="margin-top: 16px; display: none;">
+                <button class="option gone" id="simpleViewBtn">Simple</button>
+                <button class="option gone" id="detailedViewBtn">Detailed</button>
+                <button class="option gone" id="extraViewBtn">Custom</button>
+            </div>
         </div>
-        
-        <!-- Additional options for Tile view -->
-        <div id="tileOptions" style="margin-top: 16px; display: none;">
-            <button class="option gone" id="simpleViewBtn">Simple</button>
-            <button class="option gone" id="detailedViewBtn">Detailed</button>
-            <button class="option gone" id="extraViewBtn">Custom</button>
+        <div class="box-shadow Search">
+            <h1>What be doing do?</h1>
+            <p>do you want to know what be doing do? Look no further:</p>
+            <div class="flex">
+                <button>Guilds?</button>
+                <button>Underlord?</button>
+                <button>Weird stats?</button>
+            </div>
         </div>
     </div>
     <div class="container-guild">

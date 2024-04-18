@@ -48,9 +48,6 @@ a {
 }
 
 #Search {
-    padding: 2rem;
-    background-color: rgba(50, 50, 50, 0.5);
-    border-radius: 2rem;
 }
 
 #Background {
@@ -177,4 +174,16 @@ a {
   font-size: 8px;
   display: inline-block;
   line-height: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Search {
+  margin: 10px;
+  padding: 2rem;
+  background-color: rgba(50, 50, 50, 0.5);
+  border-radius: 2rem;
 }
