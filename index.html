@@ -14,8 +14,8 @@
     <h1>Quaver Guilds</h1>
     <div id="Search" class="box-shadow">
         <p>Enter usernames separated by commas (e.g., user1, user2, user3)<br>(for custom only):</p>
-        <select id="Guilds" onselect="getScores()">
-            <option value="">-- Select Clan --</option>
+        <select id="Guilds">
+            <option value="">Custom</option>
             <option value="ARG">ARG</option>
             <option value="ESV">ESV</option>
             <option value="ATP">ATP</option>
@@ -23,8 +23,25 @@
             <option value="ERA">ERA</option>
             <option value="ABSR">ABSR</option>
             <option value="TC">TC</option>
-          </select>
-          <br> <br>
+        </select>
+
+        <select id="sortSelect">
+            <option value="Username">Username</option>
+            <option value="Performance">Performance</option>
+            <option value="Accuracy">Accuracy</option>
+            <option value="Score">Score</option>
+            <option value="Plays">Play Count</option>
+            <option value="Rating">Rating</option>
+            <option value="Bonus">Bonus</option>
+            <option value="Consistency">Consistency</option>
+            <option value="Value">Value</option>
+        </select>
+
+        <select id="ascdesc">
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+        </select>
+        <br><br>
         <input type="text" id="usernames" placeholder="Usernames">
         <button onclick="getScores((document.getElementById('usernames').value) ? document.getElementById('usernames').value.split(',') : undefined)">Load Users</button>
         <button onclick="setBackground()">New Background</button>
