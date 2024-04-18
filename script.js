@@ -28,7 +28,7 @@ const Guilds = {
     },
     "ARG" : {
         "Name": "Ascension : Rhythm Games",
-        "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)",
+        "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)<br><a href=\"https://discord.gg/u8MwD9mNYd\">Join The Discord</a>",
         "Members" : [
             "66471",
             "37932",
@@ -101,6 +101,7 @@ const Guilds = {
             "174554",
             "19735",
             "351304",
+            "180435",
         ]
     },
     "FQH" : {
@@ -134,7 +135,6 @@ const Guilds = {
         "Name": "Act Broke Stay Rich",
         "Desc":"",
         "Members" : [
-            "180435",
             "3233",
             "109823",
         ]
@@ -154,8 +154,14 @@ const Guilds = {
     }
 }
 
+document.getElementById('Guilds').addEventListener('change', function() {
+    getScores()
+    });
 // Creates the users and calculates the guild scores
 function getScores(list = undefined /* Custom user list for "usernames" search bar */) {
+
+    console.log("Loading Users")
+
   const guilded = [].concat(Guilds.ARG.Members, Guilds.ESV.Members, Guilds.ATP.Members, Guilds.FQH.Members, Guilds.ERA.Members, Guilds.ABSR.Members, Guilds.TC.Members) // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
   const usernames = ((list) ? list : (document.getElementById('Guilds').value) ? Guilds[document.getElementById('Guilds').value].Members : guilded);//document.getElementById("usernames").value.split(",");
   const resultsDiv = document.getElementById("results");
@@ -211,6 +217,7 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
       <br>Overall Acc: ${formatNumber(totalAcc / users.length, 4)}%
       <br>Members: ${formatNumber(users.length)}
       <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})`;
+      sortUsers(document.getElementById('sortSelect').value, this.value == "Ascending" ? 1 : -1);
     } catch (error) {
       console.error("Error fetching data for", username, error);
       resultsDiv.innerHTML += `<p class="user-score">${trimmedUsername}: Error fetching data.</p>`;
@@ -224,6 +231,8 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
             option.classList.remove("gone");
         }
     }    
+
+    
 }
 
 // 1000 -> 1k || 1000000 -> 1m || etc.
@@ -311,6 +320,86 @@ function getRank(value) {
     return [ranks[index], a];
   }
 
+  document.getElementById('ascdesc').addEventListener('change', function() {
+    sortUsers(document.getElementById('sortSelect').value, this.value == "Ascending" ? 1 : -1);
+    });
+  document.getElementById('sortSelect').addEventListener('change', function() {
+    sortUsers(this.value, document.getElementById('ascdesc').value == "Ascending" ? 1 : -1);
+    });
+  function sortUsers(parameter, order = 1) {
+    const users = Array.from(document.querySelectorAll('.user'));
+
+    users.sort((a, b) => {
+        const valueA = getValue(a, parameter);
+        const valueB = getValue(b, parameter);
+
+        if (valueA < valueB) {
+            return -1 * order;
+        }
+        if (valueA > valueB) {
+            return 1 * order;
+        }
+        return 0;
+    });
+
+    const parent = users[0].parentNode;
+    users.forEach(user => parent.appendChild(user));
+}
+
+function getValue(userElement, parameter) {
+    const getTextContent = (element, selector) => {
+        const selectedElement = element.querySelector(selector);
+        return selectedElement ? selectedElement.textContent.trim() : '';
+    };
+
+    const parseSimplifiedNumber = (text) => {
+        const numberPart = parseFloat(text);
+        const multiplier = text.slice(-1).toLowerCase(); // Get the last character and make it lowercase
+
+        if (isNaN(numberPart)) return NaN;
+
+        console.log(multiplier)
+
+        switch (multiplier) {
+            case 'k':
+                console.log("a")
+                return numberPart * 1000;
+            case 'm':
+                console.log("b")
+                return numberPart * 1000000;
+            case 'b':
+                console.log("c")
+                return numberPart * 1000000000;
+            default:
+                console.log("d")
+                return numberPart;
+        }
+    };
+
+    switch(parameter) {
+        case "Username":
+            return getTextContent(userElement, '.user-name');
+        case "Performance":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(1)').split(':')[1]);
+        case "Accuracy":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(2)').split(':')[1]);
+        case "Score":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(3)').split(':')[1].split(' (')[0]);
+        case "Plays":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(3)').split('(')[1].split(' p')[0]);
+        case "Rating":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(4)').split(':')[1]);
+        case "Bonus":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(5)').split(':')[1]);
+        case "Consistency":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(6)').split(':')[1]);
+        case "Value":
+            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(7)').split(':')[1]);
+        default:
+            return 0;
+    }
+}
+
 // User data
 class User {
     constructor(data, url, guild) {
@@ -372,7 +461,7 @@ class User {
             <div class="user-score">
                 <p> Performance : ${formatNumber(this.overallPerformance, 4)}p (${getRank(this.overallPerformance)[0]}) </p>
                 <p> Accuracy : ${formatNumber(this.overallAccuracy, 4)}% (${getAccuracyRank(this.overallAccuracy)[0]}) </p>
-                <p> Score : ${formatNumber(this.rankedScore)} </p>
+                <p> Score : ${formatNumber(this.rankedScore)} <a>(${formatNumber(this.playCount)} plays)</a> </p>
             </div>
             <div class="user-score">
                 <p> Rating : ${formatNumber(this.rating)} </p>
