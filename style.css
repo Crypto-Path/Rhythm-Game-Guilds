@@ -176,5 +176,6 @@ a {
 
 .guild-desc {
   font-size: 8px;
-  line-height: 6px;
+  display: inline-block;
+  line-height: 10px;
 }
