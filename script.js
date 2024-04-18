@@ -5,25 +5,25 @@ let guildScore = 0;
 let guildPerformance = 0;
 
 const Guilds = {
-    "" : { // Testing
+    "" : { 
         "Name": "All / Custom",
         "Desc": "",
-        "Members" : [ // Ignore this, this is just some small random list of people I am or was close to for sometime, oh and I'm in here :partying_face:
-            "66471",    // Cyphe Mercury (ARG)
-            "37932",    // Mystifical07 (ARG)
-            "207094",   // Hiso
-            "345922",   // Kantalla (ESV)
-            "529469",   // Kantalla's Wife
-            "200927",   // Kidnapper
-            "564030",   // Four!!
-            "537305",   // Mach
-            "292803",   // Nanahira Lover (ESV)
-            "636610",   // ttvxmkey1
-            "339576",   // Average (ESV)
-            "275805",   // Wackyy
-            "132338",   // JJonasB
-            "28041",    // Wandering Kitten
-            "608",      // Reshi
+        "Members" : [ 
+            "66471",    
+            "37932",    
+            "207094",   
+            "345922",   
+            "529469",   
+            "200927",   
+            "564030",   
+            "537305",   
+            "292803",   
+            "636610",   
+            "339576",   
+            "275805",   
+            "132338",   
+            "28041",    
+            "608"      
         ]
     },
     "ARG" : {
@@ -57,7 +57,7 @@ const Guilds = {
     },
     "ATP" : {
         "Name": "Association of Tennis Professionals",
-        "Desc":"",
+        "Desc":"Put your mouse away, turn on autoplay",
         "Members" : [
             "312737",
             "97620",
@@ -101,7 +101,7 @@ const Guilds = {
             "174554",
             "19735",
             "351304",
-            "180435",
+            "180435"
         ]
     },
     "FQH" : {
@@ -129,14 +129,17 @@ const Guilds = {
             "156178",
             "658653",
             "8907",
+            "5"
         ]
     },
     "ABSR" : {
         "Name": "Act Broke Stay Rich",
         "Desc":"",
         "Members" : [
+            "72465",
             "3233",
             "109823",
+            "170337"
         ]
     },
     "TC" : {
@@ -149,7 +152,15 @@ const Guilds = {
             "35229",
             "477317",
             "98466",
-            "256802",
+            "256802"
+        ]
+    },
+    "BOB" : {
+        "Name": "Barack Obama Battlecarrier",
+        "Desc":"",
+        "Members" : [
+            "49146",
+            "118003"
         ]
     }
 }
