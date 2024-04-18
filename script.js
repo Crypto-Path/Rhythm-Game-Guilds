@@ -399,13 +399,13 @@ function getValue(userElement, parameter) {
         case "Plays":
             return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(3)').split('(')[1].split(' p')[0]);
         case "Rating":
-            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(4)').split(':')[1]);
+            return parseSimplifiedNumber(userElement.querySelector('div:nth-of-type(3)').querySelector('p:nth-of-type(1)').innerText.split(':')[1]);
         case "Bonus":
-            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(5)').split(':')[1]);
+            return parseSimplifiedNumber(userElement.querySelector('div:nth-of-type(3)').querySelector('p:nth-of-type(2)').innerText.split(':')[1]);
         case "Consistency":
-            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(6)').split(':')[1]);
+            return parseSimplifiedNumber(userElement.querySelector('div:nth-of-type(3)').querySelector('p:nth-of-type(3)').innerText.split(':')[1]);
         case "Value":
-            return parseSimplifiedNumber(getTextContent(userElement, '.user-score p:nth-of-type(7)').split(':')[1]);
+            return parseSimplifiedNumber(userElement.querySelector('div:nth-of-type(3)').querySelector('p:nth-of-type(4)').innerText.split(':')[1]);
         default:
             return 0;
     }
