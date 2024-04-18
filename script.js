@@ -8,23 +8,7 @@ const Guilds = {
     "" : { 
         "Name": "All / Custom",
         "Desc": "",
-        "Members" : [ 
-            "66471",    
-            "37932",    
-            "207094",   
-            "345922",   
-            "529469",   
-            "200927",   
-            "564030",   
-            "537305",   
-            "292803",   
-            "636610",   
-            "339576",   
-            "275805",   
-            "132338",   
-            "28041",    
-            "608"      
-        ]
+        "Members" : []
     },
     "ARG" : {
         "Name": "Ascension : Rhythm Games",
@@ -174,7 +158,7 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
 
     console.log("Loading Users")
 
-  const guilded = [].concat(Guilds.ARG.Members, Guilds.ESV.Members, Guilds.ATP.Members, Guilds.FQH.Members, Guilds.ERA.Members, Guilds.ABSR.Members, Guilds.TC.Members) // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
+  const guilded = getAllGuildMembers() // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
   const usernames = ((list) ? list : (document.getElementById('Guilds').value) ? Guilds[document.getElementById('Guilds').value].Members : guilded);//document.getElementById("usernames").value.split(",");
   const resultsDiv = document.getElementById("results");
   const guildInfo = document.getElementById("guildInfoContent");
@@ -248,6 +232,10 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
     }    
 
     
+}
+
+function getAllGuildMembers() {
+    return Object.values(Guilds).flatMap(guild => guild.Members);
 }
 
 // 1000 -> 1k || 1000000 -> 1m || etc.
