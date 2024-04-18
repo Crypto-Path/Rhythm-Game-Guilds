@@ -139,7 +139,8 @@ const Guilds = {
             "72465",
             "3233",
             "109823",
-            "170337"
+            "170337",
+            "1408"
         ]
     },
     "TC" : {
@@ -215,9 +216,11 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
 
       let playCount = 0;
       let totalAcc = 0;
+      let totalHits = 0;
       users.forEach((user) => {
         playCount += user.playCount;
         totalAcc += user.overallAccuracy;
+        totalHits += user.totalHits;
       })
       guildInfo.innerHTML = 
       `<h1>${(document.getElementById('Guilds').value != "") ? Guilds[document.getElementById('Guilds').value].Name : "All / Custom"} (${guild})</h1>
@@ -227,7 +230,8 @@ function getScores(list = undefined /* Custom user list for "usernames" search b
       <br>Overall Score: ${formatNumber(guildScore)}
       <br>Overall Acc: ${formatNumber(totalAcc / users.length, 4)}%
       <br>Members: ${formatNumber(users.length)}
-      <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})`;
+      <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})
+      <br>Notes Hit: ${formatNumber(totalHits)} (AVG: ${formatNumber(totalHits/users.length)})`;
       sortUsers(document.getElementById('sortSelect').value, this.value == "Ascending" ? 1 : -1);
     } catch (error) {
       console.error("Error fetching data for", username, error);
@@ -441,6 +445,14 @@ class User {
         this.maxCombo = data.keys4.stats.max_combo;
         this.rankedScore = data.keys4.stats.ranked_score;
         this.totalScore = data.keys4.stats.total_score;
+        // AccuracyStuff
+        this.hmarvs = data.keys4.stats.total_marv;
+        this.hperfs = data.keys4.stats.total_perf;
+        this.hgreats = data.keys4.stats.total_great;
+        this.hgoods = data.keys4.stats.total_good;
+        this.hokays = data.keys4.stats.total_okay;
+        this.hmisss = data.keys4.stats.total_miss;
+        this.totalHits = this.hmarvs + this.hperfs + this.hgreats + this.hgoods + this.hokays + this.hmisss;
         // Stats
         this.rating = this.overallAccuracy / 100 * this.overallPerformance;
         this.bonus = 1 + this.xRanks * 1 + this.ssRanks * 0.05 + this.sRanks * 0.01;
@@ -479,6 +491,9 @@ class User {
                 <p> Bonus : ${formatNumber(this.bonus)} </p>
                 <p> consistency : ${formatNumber(this.consistency)} </p>
                 <p> Value : ${formatNumber(this.val)} </p>
+            </div>
+            <div class="user-score">
+                <p> Notes hit : ${formatNumber(this.totalHits)}</p>
             </div>
         </div>`;
     }

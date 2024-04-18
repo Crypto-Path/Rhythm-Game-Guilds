@@ -15,6 +15,10 @@ a {
   color: azure;
 }
 
+p {
+  font-size: 12px;
+}
+
 #results {
   margin-top: 20px;
   width: 52rem;
@@ -182,6 +186,9 @@ a {
 }
 
 .Search {
+  max-width: 32rem;
+  max-height: 220px;
+  overflow-y: auto;
   margin: 10px;
   padding: 2rem;
   background-color: rgba(50, 50, 50, 0.5);
