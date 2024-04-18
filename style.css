@@ -43,7 +43,6 @@ a {
   padding: 1rem;
   margin: -1rem;
   
-  max-height: calc(50vh - 100px); /* Adjust the height as needed */
   overflow-y: auto;
   position: fixed; /* Keep the content fixed relative to the viewport */
 }
