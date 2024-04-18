@@ -112,7 +112,7 @@ const Guilds = {
         ]
     },
     "ERA" : {
-        "Name": "Eat Red Alligators (idk)",
+        "Name": "ERA",
         "Desc":"",
         "Members" : [
             "74949",
