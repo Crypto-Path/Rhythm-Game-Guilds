@@ -463,7 +463,7 @@ class User {
         `<div class="user box-shadow">
             <div class="user-info-basic box-shadow">
                 <img class="user-pfp box-shadow" src="${this.pfp}">
-                <div class="user-status" style="background-color: ${this.isActive ? "green" : "red"};" title="This is supposed to show the users online status, but I'm not sure if the api works correctly"></div>
+                <div class="user-status" style="background-color: ${this.isActive ? "green" : "red"};" title="This is supposed to show the users online status, but I'm not sure if the api works correctly."></div>
                 <a class="user-name " href="${this.profile}">
                     ${this.username}
                 </a>
