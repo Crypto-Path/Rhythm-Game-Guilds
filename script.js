@@ -133,6 +133,7 @@ const Guilds = {
         "Name": "Touhou Cafe",
         "Desc":"",
         "Members" : [
+            "1555",
             "103197",
             "95481",
             "94271",
