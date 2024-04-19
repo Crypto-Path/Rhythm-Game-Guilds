@@ -279,7 +279,7 @@ function getRank(value) {
     // Calculate the index based on the percentage of the value relative to the total range
     const index = Math.floor((clampedValue / 1000) * ranks.length);
   
-    return [ranks[index], ((index+1)*1000/13)];
+    return [ranks[index], ((index+1)*1000/11)];
   }
 
   function getAccuracyRank(accuracy) {
