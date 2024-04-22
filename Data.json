@@ -1,0 +1,149 @@
+{
+    "" : { 
+        "Name": "All / Custom",
+        "Desc": "",
+        "Members" : []
+    },
+    "ARG" : {
+        "Name": "Ascension : Rhythm Games",
+        "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)<br><a href=\"https://discord.gg/u8MwD9mNYd\">Join The Discord</a>",
+        "Members" : [
+            "66471",
+            "37932",
+            "207094",
+            "275805",
+            "132338"
+        ]
+    },
+    "ESV" : {
+        "Name": "Everything Scroll Velocity",
+        "Desc":"",
+        "Members" : [
+            "53425",
+            "345922",
+            "292803",
+            "339576",
+            "659573",
+            "653123",
+            "599944",
+            "1223",
+            "332660",
+            "242639",
+            "206601"
+
+        ]
+    },
+    "ATP" : {
+        "Name": "Association of Tennis Professionals",
+        "Desc":"Put your mouse away, turn on autoplay",
+        "Members" : [
+            "312737",
+            "97620",
+            "297782",
+            "57490",
+            "303592",
+            "278026",
+            "401686",
+            "336206",
+            "29951",
+            "31771",
+            "82620",
+            "44614",
+            "239463",
+            "293151",
+            "155537",
+            "98246",
+            "159909",
+            "476867",
+            "264505",
+            "369530",
+            "140250",
+            "52842",
+            "114460",
+            "131754",
+            "353767",
+            "267194",
+            "143571",
+            "4665",
+            "177732",
+            "129926",
+            "63656",
+            "127730",
+            "259321",
+            "1005",
+            "145838",
+            "125703",
+            "109839",
+            "28014",
+            "174554",
+            "19735",
+            "351304",
+            "180435",
+            "276779",
+            "523213"
+        ]
+    },
+    "FQH" : {
+        "Name": "Furry Quaver Hideout",
+        "Desc":"",
+        "Members" : [
+            "45749"
+        ]
+    },
+    "ERA" : {
+        "Name": "ERA",
+        "Desc":"",
+        "Members" : [
+            "74949",
+            "3455",
+            "139104",
+            "633020",
+            "158280",
+            "77881",
+            "138099",
+            "202923",
+            "634686",
+            "105894",
+            "243570",
+            "156178",
+            "658653",
+            "8907",
+            "5",
+            "47145"
+        ]
+    },
+    "ABSR" : {
+        "Name": "Act Broke Stay Rich",
+        "Desc":"",
+        "Members" : [
+            "72465",
+            "3233",
+            "109823",
+            "170337",
+            "1408",
+            "216443"
+        ]
+    },
+    "TC" : {
+        "Name": "Touhou Cafe",
+        "Desc":"",
+        "Members" : [
+            "1555",
+            "103197",
+            "95481",
+            "94271",
+            "35229",
+            "477317",
+            "98466",
+            "256802"
+        ]
+    },
+    "BOB" : {
+        "Name": "Barack Obama Battlecarrier",
+        "Desc":"",
+        "Members" : [
+            "49146",
+            "118003"
+        ]
+    }
+}
