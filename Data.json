@@ -6,6 +6,7 @@
     },
     "ARG" : {
         "Name": "Ascension : Rhythm Games",
+        "Logo": "https://cdn.discordapp.com/attachments/1230702284812320838/1230714099067916390/Sprite-0001.jpg?ex=663452d2&is=6621ddd2&hm=3e09fb88a232dfc1b561b2cdccce72528582f343d6cc053b4b0a01962095a246&",
         "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)<br><a href=\"https://discord.gg/u8MwD9mNYd\">Join The Discord</a>",
         "Members" : [
             "66471",
@@ -17,6 +18,7 @@
     },
     "ESV" : {
         "Name": "Everything Scroll Velocity",
+        "Logo": "",
         "Desc":"",
         "Members" : [
             "53425",
@@ -34,7 +36,8 @@
         ]
     },
     "ATP" : {
-        "Name": "Association of Tennis Professionals",
+        "Name": "Autoplay",
+        "Logo": "https://cdn.discordapp.com/attachments/1230701887611736144/1230701900446568539/ATP_Banner.jpg?ex=66344776&is=6621d276&hm=0cdd2d05ed0edb1c682e15e57f351dad741ae1579a4e6d5d3eeaeb48a93d8858&",
         "Desc":"Put your mouse away, turn on autoplay",
         "Members" : [
             "312737",
@@ -85,6 +88,7 @@
     },
     "FQH" : {
         "Name": "Furry Quaver Hideout",
+        "Logo": "",
         "Desc":"",
         "Members" : [
             "45749"
@@ -92,6 +96,7 @@
     },
     "ERA" : {
         "Name": "ERA",
+        "Logo": "",
         "Desc":"",
         "Members" : [
             "74949",
@@ -108,13 +113,13 @@
             "156178",
             "658653",
             "8907",
-            "5",
-            "47145"
+            "5"
         ]
     },
     "ABSR" : {
         "Name": "Act Broke Stay Rich",
-        "Desc":"",
+        "Logo": "https://cdn.discordapp.com/attachments/1160823582369251330/1230711684025417839/ABSR.png?ex=66345092&is=6621db92&hm=6f755e29d7ecfcd4fb0ee0235cef03a4709a9add545cdb3180990f65d14930b2&",
+        "Desc": "",
         "Members" : [
             "72465",
             "3233",
@@ -126,6 +131,7 @@
     },
     "TC" : {
         "Name": "Touhou Cafe",
+        "Logo": "",
         "Desc":"",
         "Members" : [
             "1555",
@@ -140,6 +146,7 @@
     },
     "BOB" : {
         "Name": "Barack Obama Battlecarrier",
+        "Logo": "",
         "Desc":"",
         "Members" : [
             "49146",
