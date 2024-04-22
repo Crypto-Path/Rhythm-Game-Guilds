@@ -4,238 +4,122 @@ let guild = document.getElementById('Guilds').value;
 let guildScore = 0;
 let guildPerformance = 0;
 
-const Guilds = {
-    "" : { 
-        "Name": "All / Custom",
-        "Desc": "",
-        "Members" : []
-    },
-    "ARG" : {
-        "Name": "Ascension : Rhythm Games",
-        "Desc": "A guild for everything rhythm game, but focuses primarily on the 4K/7K-VSRG, Quaver, 4K mode. The owner is the idiot who made this, Quaver Guide (doesn't really work), and discord bot Alpha Mercury (only in ARG discord server as of now)<br><a href=\"https://discord.gg/u8MwD9mNYd\">Join The Discord</a>",
-        "Members" : [
-            "66471",
-            "37932",
-            "207094",
-            "275805",
-            "132338"
-        ]
-    },
-    "ESV" : {
-        "Name": "Everything Scroll Velocity",
-        "Desc":"",
-        "Members" : [
-            "53425",
-            "345922",
-            "292803",
-            "339576",
-            "659573",
-            "653123",
-            "599944",
-            "1223",
-            "332660",
-            "242639",
-            "206601"
-
-        ]
-    },
-    "ATP" : {
-        "Name": "Association of Tennis Professionals",
-        "Desc":"Put your mouse away, turn on autoplay",
-        "Members" : [
-            "312737",
-            "97620",
-            "297782",
-            "57490",
-            "303592",
-            "278026",
-            "401686",
-            "336206",
-            "29951",
-            "31771",
-            "82620",
-            "44614",
-            "239463",
-            "293151",
-            "155537",
-            "98246",
-            "159909",
-            "476867",
-            "264505",
-            "369530",
-            "140250",
-            "52842",
-            "114460",
-            "131754",
-            "353767",
-            "267194",
-            "143571",
-            "4665",
-            "177732",
-            "129926",
-            "63656",
-            "127730",
-            "259321",
-            "1005",
-            "145838",
-            "125703",
-            "109839",
-            "28014",
-            "174554",
-            "19735",
-            "351304",
-            "180435",
-            "276779",
-            "523213"
-        ]
-    },
-    "FQH" : {
-        "Name": "Furry Quaver Hideout",
-        "Desc":"",
-        "Members" : [
-            "45749"
-        ]
-    },
-    "ERA" : {
-        "Name": "ERA",
-        "Desc":"",
-        "Members" : [
-            "74949",
-            "3455",
-            "139104",
-            "633020",
-            "158280",
-            "77881",
-            "138099",
-            "202923",
-            "634686",
-            "105894",
-            "243570",
-            "156178",
-            "658653",
-            "8907",
-            "5"
-        ]
-    },
-    "ABSR" : {
-        "Name": "Act Broke Stay Rich",
-        "Desc":"",
-        "Members" : [
-            "72465",
-            "3233",
-            "109823",
-            "170337",
-            "1408",
-            "216443"
-        ]
-    },
-    "TC" : {
-        "Name": "Touhou Cafe",
-        "Desc":"",
-        "Members" : [
-            "1555",
-            "103197",
-            "95481",
-            "94271",
-            "35229",
-            "477317",
-            "98466",
-            "256802"
-        ]
-    },
-    "BOB" : {
-        "Name": "Barack Obama Battlecarrier",
-        "Desc":"",
-        "Members" : [
-            "49146",
-            "118003"
-        ]
+let Guilds = {}
+async function fetchGuildData() {
+    try {
+        console.log("Fetching guild data");
+        const response = await fetch("https://raw.githubusercontent.com/Crypto-Path/RhythmGameQuildData/main/Data.json");
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching guild data:", error);
+        return null;
     }
 }
+
+async function initializeGuildData() {
+    const guildData = await fetchGuildData();
+    if (guildData) {
+        Guilds = guildData;
+        getScores();
+    }
+}
+
+initializeGuildData();
 
 document.getElementById('Guilds').addEventListener('change', function() {
     getScores()
     });
 // Creates the users and calculates the guild scores
-function getScores(list = undefined /* Custom user list for "usernames" search bar */) {
+async function getScores(list = undefined /* Custom user list for "usernames" search bar */) {
+    disableUI();
 
-    console.log("Loading Users")
+    console.log("Loading Users");
 
-  const guilded = getAllGuildMembers() // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
-  const usernames = ((list) ? list : (document.getElementById('Guilds').value) ? Guilds[document.getElementById('Guilds').value].Members : guilded);//document.getElementById("usernames").value.split(",");
-  const resultsDiv = document.getElementById("results");
-  const guildInfo = document.getElementById("guildInfoContent");
-  guildInfo.innerHTML = "";
-  resultsDiv.innerHTML = "";
+    const guilded = getAllGuildMembers(); // Default || Every known member of every known guild (excluding Guilded Guild, which was just for testing)
+    const usernames = ((list) ? list : (document.getElementById('Guilds').value) ? Guilds[document.getElementById('Guilds').value].Members : guilded);
+    console.log(usernames);
+    const resultsDiv = document.getElementById("results");
+    const guildInfo = document.getElementById("guildInfoContent");
+    guildInfo.innerHTML = "";
+    resultsDiv.innerHTML = "";
 
-  guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "A/C"; // Name for guild info
-  users = []; // Users in guild / are loaded
-  guildScore = 0; // Total score
-  guildPerformance = 0; // Custom performance system
+    guild = (document.getElementById('Guilds').value != "") ? document.getElementById('Guilds').value : "A/C"; // Name for guild info
+    users = []; // Users in guild / are loaded
+    guildScore = 0; // Total score
+    guildPerformance = 0; // Custom performance system
 
-  let performances = [];
+    let performances = [];
 
-  usernames.forEach(async (username) => {
-    let index = 0;
-    const trimmedUsername = username.trim();
-    const url = `${baseUrl}/users/full/${trimmedUsername}`;
     try {
-      const response = await fetch(url);
-      const data = await response.json();
-      const user = new User(data.user, url);
-      users.push(user)
-      user.createUserUI();
-      guildScore += user.totalScore;
+        // Map each username to a promise that fetches user data
+        const userPromises = usernames.map(async (username) => {
+            let index = 0;
+            const trimmedUsername = username.trim();
+            const url = `${baseUrl}/users/full/${trimmedUsername}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const user = new User(data.user, url);
+            user.id = username;
+            users.push(user);
+            user.createUserUI();
+            guildScore += user.totalScore;
 
-      performances.push(user.overallPerformance)
-      performances = performances.sort(function(a, b) {
-        return b - a;
-      });
-  
-      let tempPerformance = 0;
-      performances.forEach((rating) => {
-        const weighted = rating * Math.pow(0.97, index);
-        tempPerformance += weighted;
-    
-        index++;
-      })
-      guildPerformance = tempPerformance;
+            performances.push(user.overallPerformance);
+            performances = performances.sort(function(a, b) {
+                return b - a;
+            });
 
-      let playCount = 0;
-      let totalAcc = 0;
-      let totalHits = 0;
-      users.forEach((user) => {
-        playCount += user.playCount;
-        totalAcc += user.overallAccuracy;
-        totalHits += user.totalHits;
-      })
-      guildInfo.innerHTML = 
-      `<h1>${(document.getElementById('Guilds').value != "") ? Guilds[document.getElementById('Guilds').value].Name : "All / Custom"} (${guild})</h1>
-      <br><a class="guild-desc">${Guilds[document.getElementById('Guilds').value].Desc}</a>
-      <br>
-      <br><h2>Stats</h2>Overall Performance: ${formatNumber(guildPerformance)}
-      <br>Overall Score: ${formatNumber(guildScore)}
-      <br>Overall Acc: ${formatNumber(totalAcc / users.length, 4)}%
-      <br>Members: ${formatNumber(users.length)}
-      <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})
-      <br>Notes Hit: ${formatNumber(totalHits)} (AVG: ${formatNumber(totalHits/users.length)})`;
-      sortUsers(document.getElementById('sortSelect').value, this.value == "Ascending" ? 1 : -1);
+            let tempPerformance = 0;
+            performances.forEach((rating) => {
+                const weighted = rating * Math.pow(0.97, index);
+                tempPerformance += weighted;
+
+                index++;
+            });
+            guildPerformance = tempPerformance;
+
+            let playCount = 0;
+            let totalAcc = 0;
+            let totalHits = 0;
+            users.forEach((user) => {
+                playCount += user.playCount;
+                totalAcc += user.overallAccuracy;
+                totalHits += user.totalHits;
+            });
+            guildInfo.innerHTML =
+                `
+          <img class="guild-banner" src="${Guilds[document.getElementById('Guilds').value].Logo}">
+          <h1>${(document.getElementById('Guilds').value != "") ? Guilds[document.getElementById('Guilds').value].Name : "All / Custom"} (${guild})</h1>
+          <br><a class="guild-desc">${Guilds[document.getElementById('Guilds').value].Desc}</a>
+          <br>
+          <br><h2>Stats</h2>Overall Performance: ${formatNumber(guildPerformance)}
+          <br>Overall Score: ${formatNumber(guildScore)}
+          <br>Overall Acc: ${formatNumber(totalAcc / users.length, 4)}%
+          <br>Members: ${formatNumber(users.length)}
+          <br>Play Count: ${formatNumber(playCount)} (AVG: ${formatNumber(playCount/users.length)})
+          <br>Notes Hit: ${formatNumber(totalHits)} (AVG: ${formatNumber(totalHits/users.length)})`;
+            sortUsers(document.getElementById('sortSelect').value, this.value == "Ascending" ? 1 : -1);
+        });
+
+        // Wait for all user loading promises to resolve
+        await Promise.all(userPromises);
+
+        // Enable UI elements after loading is complete
+        enableUI();
+        const options = document.getElementsByClassName("option");
+        for (let i = 0; i < options.length; i++) {
+            const option = options[i];
+            if (option.classList.contains("gone")) {
+                option.classList.remove("gone");
+            }
+        }    
     } catch (error) {
-      console.error("Error fetching data for", username, error);
-      resultsDiv.innerHTML += `<p class="user-score">${trimmedUsername}: Error fetching data.</p>`;
+        console.error("Error loading users:", error);
+        resultsDiv.innerHTML += `<p class="user-score">Error loading users.</p>`;
     }
-  });
-
-  const options = document.getElementsByClassName("option");
-    for (let i = 0; i < options.length; i++) {
-        const option = options[i];
-        if (option.classList.contains("gone")) {
-            option.classList.remove("gone");
-        }
-    }    
-
-    
 }
+
 
 function getAllGuildMembers() {
     return Object.values(Guilds).flatMap(guild => guild.Members);
@@ -258,6 +142,24 @@ function formatNumber(number, zeros = 0) {
   
     // If the number is less than 1000, return the original number
     return Math.round(absNumber * Math.pow(10, zeros)) / Math.pow(10, zeros);
+}
+
+// Call this function to disable all selector/search options/buttons
+function disableUI() {
+    const elementsToDisable = document.querySelectorAll("#Guilds, #sortSelect, #ascdesc, #type, #usernames, button");
+    elementsToDisable.forEach(element => {
+        element.disabled = true;
+        element.classList.add("disabled-btn"); // Add the custom class
+    });
+}
+
+// Call this function to enable all selector/search options/buttons
+function enableUI() {
+    const elementsToEnable = document.querySelectorAll("#Guilds, #sortSelect, #ascdesc, #type, #usernames, button");
+    elementsToEnable.forEach(element => {
+        element.disabled = false;
+        element.classList.remove("disabled-btn"); // Remove the custom class
+    });
 }
 
 // TODO: Simplify into 1 function for the stages
@@ -410,6 +312,7 @@ function getValue(userElement, parameter) {
 class User {
     constructor(data, url, guild) {
         // Info
+        this.id = 0;
         this.username = data.info.username;
         this.pfp = data.info.avatar_url
         this.isActive = data.info.online;
@@ -460,11 +363,13 @@ class User {
     // Creates the user thingyy...
     createUserUI() {
         const results = document.getElementById("results");
+        const onlineStatusPromise = this.fetchOnlineStatus(); // Initiate fetch asynchronously
+        
         results.innerHTML += 
         `<div class="user box-shadow">
             <div class="user-info-basic box-shadow">
                 <img class="user-pfp box-shadow" src="${this.pfp}">
-                <div class="user-status" style="background-color: ${this.isActive ? "green" : "red"};" title="This is supposed to show the users online status, but I'm not sure if the api works correctly."></div>
+                <div id="status${this.id}" class="user-status" style="background-color: red;" title="Online status is being fetched"></div>
                 <a class="user-name " href="${this.profile}">
                     ${this.username}
                 </a>
@@ -473,7 +378,7 @@ class User {
                 </a>
             </div>
             <div class="user-score">
-                <p> Performance : ${formatNumber(this.overallPerformance, 4)}p (${getRank(this.overallPerformance)[0]}) </p>
+                <p> Performance : ${formatNumber(this.overallPerformance, 4)}p (${getRank(this.overallPerformance)[0]} ${formatNumber(Math.floor(this.overallPerformance), 0) == "727" ? "WYSI" : ""}) </p>
                 <p> Accuracy : ${formatNumber(this.overallAccuracy, 4)}% (${getAccuracyRank(this.overallAccuracy)[0]}) </p>
                 <p> Score : ${formatNumber(this.rankedScore)} <a>(${formatNumber(this.playCount)} plays)</a> </p>
             </div>
@@ -487,5 +392,27 @@ class User {
                 <p> Notes hit : ${formatNumber(this.totalHits)}</p>
             </div>
         </div>`;
+    
+        onlineStatusPromise.then(onlineStatus => {
+            console.log(onlineStatus.is_online)
+            const userStatus = document.querySelector(`#status${this.id}`);
+            if (userStatus) {
+                userStatus.style.backgroundColor = onlineStatus.is_online ? "green" : "red";
+                userStatus.title = onlineStatus.is_online ? `User is online\n${onlineStatus.current_status.content}` : "User is offline";
+            }
+        }).catch(error => {
+            console.error("Error fetching online status for", this.username, error);
+        });
+    }
+    
+    async fetchOnlineStatus() {
+        try {
+            const response = await fetch(`https://api.quavergame.com/v1/server/users/online/${this.id}`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Error fetching online status for", this.username, error);
+            return false; // Default to false if there's an error
+        }
     }
 }

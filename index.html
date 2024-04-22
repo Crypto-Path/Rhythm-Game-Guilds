@@ -24,7 +24,7 @@
                 <option value="ERA">ERA</option>
                 <option value="ABSR">ABSR</option>
                 <option value="TC">TC</option>
-                <option value="BOB">BOB</option>
+                <option value="BOB">BOB</option> <!--GFC = Grill fried chicken-->
             </select>
 
             <select id="sortSelect">
@@ -42,6 +42,11 @@
             <select id="ascdesc">
                 <option value="Ascending">Ascending</option>
                 <option value="Descending">Descending</option>
+            </select>
+
+            <select id="type">
+                <option value="Regular">Regular</option>
+                <option value="GuildLeaders">Guild Leaders</option>
             </select>
             <br><br>
             <input type="text" id="usernames" placeholder="Usernames">
@@ -63,7 +68,19 @@
         </div>
         <div class="box-shadow Search">
             <h1>Info & How to use</h1>
-            <p>This site focuses on trying to share information, primarily about quaver guild, and compare stats of both users and their guilds.<br><br>To begin press Load users, to only see members from a specific guild use the drop down in the top left. Use grid view to be able to see more users, or tile view to view more individual info.<br><br><strong>What is underlord/overlord?</strong> these are custom progression stages inspired from the stages of progression in Will Wrights novel, Cradle. <a href ="https://www.worldanvil.com/w/cradle-fallenredn/a/levels-of-advancement-article">Levels of Advancement in Cradle</a><br><br><strong>What are the bottom 4 stats?</strong> The bottom 4 stats are custom stats I made, the first three go toward 4, value, which aims to resent the users accomplishments with their performance.<br>Rating is acc * performance<br>Bonus is the accumulation of S or higher ranked plays (weighted per grade)<br>Consistency is the ratio of plays to fails multiplied by highest combo<br>Value is just Rating + (Bonus * Consistency)</p>
+            <p>This site focuses on trying to share information, primarily about quaver guild, and compare stats of both users and their guilds.
+                <br><br>To begin press Load users, to only see members from a specific guild use the drop down in the top left. Use grid view to be able to see more users, or tile view to view more individual info.
+                <br><br><strong>What is underlord/overlord?</strong> these are custom progression stages inspired from the stages of progression in Will Wrights novel, Cradle. 
+                <a href ="https://www.worldanvil.com/w/cradle-fallenredn/a/levels-of-advancement-article">Levels of Advancement in Cradle</a>
+                <br><br><strong>What are the bottom 4 stats?</strong> The bottom 4 stats are custom stats I made, the first three go toward 4, value, which aims to resent the users accomplishments with their performance.
+                <br>Rating is acc * performance<br>Bonus is the accumulation of S or higher ranked plays (weighted per grade)
+                <br>Consistency is the ratio of plays to fails multiplied by highest combo
+                <br>Value is just Rating + (Bonus * Consistency)
+                <br><br><a href ="https://github.com/Crypto-Path/RhythmGameQuildData">Want to contribute information?</a>
+                <br><a href ="https://github.com/Crypto-Path/Rhythm-Game-Guilds">Want to contribute to development?</a>
+                <br><br>Created by <a href ="https://cyphemercury.online/">Cyphe Mercury</a> and <a href ="https://discord.gg/quaver">The Quaver Community</a> 
+                <br><br>Quaver Guilds is not affiliated with <a href ="https://quavergame.com/team">The Quaver Team</a> in any way.
+            </p>
         </div>
     </div>
     <div class="container-guild">
@@ -187,6 +204,30 @@
             }
         }    
     }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var guildInfoContent = document.getElementById("guildInfoContent");
+        
+        function updatePosition() {
+          var viewportMiddle = window.innerHeight / 2;
+          
+          var guildInfoContentTop = guildInfoContent.getBoundingClientRect().top;
+          
+          if (window.scrollY > 200) {
+            guildInfoContent.style.position = "fixed";
+            guildInfoContent.style.top = "200px";
+          } else {
+            guildInfoContent.style.position = "static";
+            guildInfoContent.style.top = "";
+          }
+        }
+        
+        window.addEventListener("scroll", updatePosition);
+        
+        // Initial call to updatePosition function
+        updatePosition();
+      });
   </script>
 </body>
 </html>

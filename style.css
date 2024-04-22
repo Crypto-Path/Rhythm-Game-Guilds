@@ -19,6 +19,13 @@ p {
   font-size: 12px;
 }
 
+button.disabled-btn {
+  opacity: 0.5;
+  background-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+}
+
 #results {
   margin-top: 20px;
   width: 52rem;
@@ -95,6 +102,13 @@ p {
   padding: 6px;
   background-color: rgba(127, 127, 127, 0.33);
   border-radius: 1rem;
+
+  transition-duration: 200ms;
+}
+
+.user:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .user.grid {
@@ -150,7 +164,7 @@ p {
 }
 
 .box-shadow {
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67); /* Horizontal offset, vertical offset, blur radius, color */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
 }
 
 .gone {
@@ -169,13 +183,23 @@ p {
   color: #333;
 }
 
+.option.disable {
+  background-color: #9c9c9c;
+}
+
 .option.active {
   background-color: #333;
   color: #fff;
 }
 
+.guild-banner {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+}
+
 .guild-desc {
-  font-size: 8px;
+  font-size: 12px;
   display: inline-block;
   line-height: 10px;
 }

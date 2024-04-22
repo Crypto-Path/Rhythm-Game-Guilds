@@ -1,2 +1,3 @@
 # Quaver-Guilds
- I'll write stuff here later
+
+A place to get information on quaver guilds and users, with custom stats
