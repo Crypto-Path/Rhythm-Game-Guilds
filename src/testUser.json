@@ -1,0 +1,148 @@
+{
+    "info": {
+      "id": 336206,
+      "steam_id": "76561198870281601",
+      "username": "ATP Kaedee Fan",
+      "time_registered": "2022-02-06T08:01:18.629Z",
+      "allowed": 1,
+      "privileges": 1,
+      "usergroups": 257,
+      "mute_endtime": "2023-12-16T22:41:46.624Z",
+      "latest_activity": "2024-05-04T02:28:50.401Z",
+      "country": "US",
+      "avatar_url": "https://avatars.steamstatic.com/bc1bfde4653e30c3ab628f3eae5377d3409adf55_full.jpg",
+      "userpage": "Guys im a really big fan of Kaedee",
+      "information": {
+        "default_mode": 2,
+        "discord": "YashikiWarashi",
+        "twitter": "",
+        "twitch": "yashikiwarashi_",
+        "youtube": "",
+        "notif_action_mapset": true
+      },
+      "userpage_disabled": 0,
+      "clan_id": null,
+      "online": false
+    },
+    "profile_badges": [
+      {
+        "id": 3,
+        "name": "Donator",
+        "description": "Generously supported Quaver by making a donation"
+      }
+    ],
+    "activity_feed": [
+      {
+        "id": 2451770,
+        "type": 2,
+        "timestamp": "2024-04-30T06:30:14.909Z",
+        "map": {
+          "id": 31323,
+          "name": "nnn - Centipede (Cut Ver.)"
+        }
+      },
+      {
+        "id": 2451768,
+        "type": 2,
+        "timestamp": "2024-04-30T06:26:29.227Z",
+        "map": {
+          "id": 31323,
+          "name": "nnn - Centipede (Cut Ver.)"
+        }
+      },
+      {
+        "id": 2447091,
+        "type": 2,
+        "timestamp": "2024-04-26T22:48:14.874Z",
+        "map": {
+          "id": 31323,
+          "name": "nnn - Centipede (Cut Ver.)"
+        }
+      },
+      {
+        "id": 2393359,
+        "type": 2,
+        "timestamp": "2024-03-15T20:57:36.563Z",
+        "map": {
+          "id": 31323,
+          "name": "nnn - Centipede (Cut Ver.)"
+        }
+      },
+      {
+        "id": 2388718,
+        "type": 2,
+        "timestamp": "2024-03-11T17:14:00.622Z",
+        "map": {
+          "id": 31323,
+          "name": "nnn - Centipede (Cut Ver.)"
+        }
+      }
+    ],
+    "clan": null,
+    "keys4": {
+      "globalRank": 411,
+      "countryRank": 114,
+      "multiplayerWinRank": 31,
+      "stats": {
+        "user_id": 336206,
+        "total_score": 5167923483,
+        "ranked_score": 1486573434,
+        "overall_accuracy": 99.347148130015,
+        "overall_performance_rating": 801.9542678926673,
+        "play_count": 6472,
+        "fail_count": 1130,
+        "max_combo": 8263,
+        "replays_watched": 0,
+        "total_marv": 10532892,
+        "total_perf": 4168784,
+        "total_great": 720877,
+        "total_good": 134938,
+        "total_okay": 33571,
+        "total_miss": 127297,
+        "total_pauses": 0,
+        "multiplayer_wins": 1083,
+        "multiplayer_losses": 1776,
+        "multiplayer_ties": 97,
+        "count_grade_x": 2,
+        "count_grade_ss": 349,
+        "count_grade_s": 992,
+        "count_grade_a": 247,
+        "count_grade_b": 54,
+        "count_grade_c": 3,
+        "count_grade_d": 1
+      }
+    },
+    "keys7": {
+      "globalRank": 1140,
+      "countryRank": 213,
+      "multiplayerWinRank": 700,
+      "stats": {
+        "user_id": 336206,
+        "total_score": 401632052,
+        "ranked_score": 178147123,
+        "overall_accuracy": 95.41913425545864,
+        "overall_performance_rating": 363.9069477293574,
+        "play_count": 547,
+        "fail_count": 39,
+        "max_combo": 1029,
+        "replays_watched": 0,
+        "total_marv": 162503,
+        "total_perf": 77041,
+        "total_great": 17068,
+        "total_good": 4348,
+        "total_okay": 1318,
+        "total_miss": 7156,
+        "total_pauses": 0,
+        "multiplayer_wins": 8,
+        "multiplayer_losses": 15,
+        "multiplayer_ties": 2,
+        "count_grade_x": 0,
+        "count_grade_ss": 56,
+        "count_grade_s": 74,
+        "count_grade_a": 60,
+        "count_grade_b": 25,
+        "count_grade_c": 2,
+        "count_grade_d": 0
+      }
+    }
+  }
