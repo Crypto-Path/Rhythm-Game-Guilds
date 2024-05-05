@@ -1,4 +1,5 @@
-{
+[
+    {
     "info": {
       "id": 336206,
       "steam_id": "76561198870281601",
@@ -89,7 +90,7 @@
         "ranked_score": 1486573434,
         "overall_accuracy": 99.347148130015,
         "overall_performance_rating": 801.9542678926673,
-        "play_count": 6472,
+         "play_count": 6472,
         "fail_count": 1130,
         "max_combo": 8263,
         "replays_watched": 0,
@@ -145,4 +146,158 @@
         "count_grade_d": 0
       }
     }
+  },
+  {
+    "info": {
+      "id": 29951,
+      "steam_id": "76561199072729181",
+      "username": "ATP Koshepen",
+      "time_registered": "2020-07-21T11:10:28.934Z",
+      "allowed": 1,
+      "privileges": 1,
+      "usergroups": 257,
+      "mute_endtime": "2024-02-23T22:38:11.983Z",
+      "latest_activity": "2024-05-05T15:48:51.810Z",
+      "country": "HK",
+      "avatar_url": "https://avatars.steamstatic.com/5576d1fe43e7708d0bfd360f5a3751054aad9c4d_full.jpg",
+      "userpage": "[center][b][h1]About Me[/h1][/b][/center]\r\n\r\n[center]Name's Koshepen, 17 years old, lived in Hong Kong and moved to Scotland on February 6th, 2022. A Quaver [url=https://www.youtube.com/channel/UC3RuqTtyUj3WLI89sHHRiqw]Youtuber[/url] and [url=https://www.twitch.tv/koshepen]Twitch[/url] streamer. Has been in the Quaver community since July 2020, had seen quite a few changes of era and events of Quaver since then.\r\n\r\nAccuracy, Speed and Tech player, sucks at Jacks and LNs, still doesn't know how to play SV well.[/center]\r\n\r\n[center][b][h1]Achievements in QOTs[/h1][/b][/center]\r\n\r\n[center][h4]Quaver Official Tournament 2020: Participated, fell out of Winner's Bracket at round of 64, fell out of tourney at round of 32.[/h4][/center]\r\n\r\n[center][h4]Quaver Official Tournament 2022: Participated, fell out of Winner's Bracket at Semi-Finals, fell out of tourney at Finals.[/h4][/center]\r\n\r\n[center][h4]Quaver Official Tournament 2023: Participated, 2nd place winner[/h4][/center]\r\n\r\n[center][b][h1]Koshepen's wat Map Collection[/h1][/b][/center]\r\n\r\n[center][h4]This map collection consists of many Creator's 音MAD or YTPMV (Mostly Kyoro cuz ehe)[/h4][/center]\r\n\r\n[center]1. [url=https://quavergame.com/mapset/map/78019]KKANTEN - YUKI_Z[/url]\r\n\r\n2. [url=https://quavergame.com/mapset/map/78069]Kyoro - Nya-go gassaku no tanpin[/url]\r\n\r\n3. [url=https://quavergame.com/mapset/map/78075]Kyoro - Kuro nuri gassaku no tanpin[/url]\r\n\r\n4. [url=https://quavergame.com/mapset/map/78082]Kyoro - Ettodesune Super Tamate te namae world map BGM 5[/url]\r\n\r\n5. [url=https://quavergame.com/mapset/map/78085]Kyoro - ＞∀＜[/url]\r\n\r\n6. [url=https://quavergame.com/mapset/map/78091]Kyoro - I'm not good at making YTPMV[/url]\r\n\r\n7. [url=https://quavergame.com/mapset/map/78097]Kyoro - Cyber Girl Festival gassaku no tanpin[/url]\r\n\r\n8. [url=https://quavergame.com/mapset/map/102542]Kyoro - Shinri Sengaku no Tanpin[/url]\r\n\r\n9. [url=https://quavergame.com/mapset/map/102816] Ippanjin K - Haunnendo Dance[/url]\r\n\r\n10. [url=https://quavergame.com/mapset/map/115747] Tongkyu - Was Q-train a new train?[/url][/center]",
+      "information": {
+        "discord": "Koshepen",
+        "twitter": "ItzKoshepen",
+        "twitch": "Koshepen",
+        "youtube": "https://www.youtube.com/channel/UC3RuqTtyUj3WLI89sHHRiqw",
+        "notif_action_mapset": true,
+        "default_mode": 1
+      },
+      "userpage_disabled": 0,
+      "clan_id": null,
+      "online": false
+    },
+    "profile_badges": [
+      {
+        "id": 3,
+        "name": "Donator",
+        "description": "Generously supported Quaver by making a donation"
+      },
+      {
+        "id": 19,
+        "name": "QOT23 - Second Place Winner\t",
+        "description": "The 2nd place winner of the QOT2023\t"
+      }
+    ],
+    "activity_feed": [
+      {
+        "id": 2457076,
+        "type": 5,
+        "timestamp": "2024-05-04T14:30:57.158Z",
+        "map": {
+          "id": 103908,
+          "name": "katagiri - #2wise4u [Zia's Wise]"
+        }
+      },
+      {
+        "id": 2455694,
+        "type": 5,
+        "timestamp": "2024-05-03T14:12:45.955Z",
+        "map": {
+          "id": 135471,
+          "name": "Ludicin - Bismuth [4K I dream about things way beyond this atmosphere.... But for now, I'm here.]"
+        }
+      },
+      {
+        "id": 2454627,
+        "type": 5,
+        "timestamp": "2024-05-02T17:27:58.691Z",
+        "map": {
+          "id": 29054,
+          "name": "Tektheist - Domain [Neo-X SpeedBlaster]"
+        }
+      },
+      {
+        "id": 2454575,
+        "type": 5,
+        "timestamp": "2024-05-02T15:45:13.956Z",
+        "map": {
+          "id": 135471,
+          "name": "Ludicin - Bismuth [4K I dream about things way beyond this atmosphere.... But for now, I'm here.]"
+        }
+      },
+      {
+        "id": 2453570,
+        "type": 6,
+        "timestamp": "2024-05-01T18:55:17.081Z",
+        "map": {
+          "id": 93819,
+          "name": "Remo-con - Matt Silver [Normal]"
+        }
+      }
+    ],
+    "clan": null,
+    "keys4": {
+      "globalRank": 7,
+      "countryRank": 1,
+      "multiplayerWinRank": 13,
+      "stats": {
+        "user_id": 29951,
+        "total_score": 7615693949,
+        "ranked_score": 3498175820,
+        "overall_accuracy": 99.53060450347427,
+        "overall_performance_rating": 979.6746655175936,
+        "play_count": 9870,
+        "fail_count": 2668,
+        "max_combo": 48347,
+        "replays_watched": 0,
+        "total_marv": 27795937,
+        "total_perf": 6292865,
+        "total_great": 930430,
+        "total_good": 214054,
+        "total_okay": 72693,
+        "total_miss": 212317,
+        "total_pauses": 0,
+        "multiplayer_wins": 1626,
+        "multiplayer_losses": 765,
+        "multiplayer_ties": 93,
+        "count_grade_x": 134,
+        "count_grade_ss": 1405,
+        "count_grade_s": 780,
+        "count_grade_a": 47,
+        "count_grade_b": 4,
+        "count_grade_c": 0,
+        "count_grade_d": 0
+      }
+    },
+    "keys7": {
+      "globalRank": 3354,
+      "countryRank": 43,
+      "multiplayerWinRank": 2066,
+      "stats": {
+        "user_id": 29951,
+        "total_score": 56529201,
+        "ranked_score": 50866141,
+        "overall_accuracy": 92.12051437152529,
+        "overall_performance_rating": 165.07430846733845,
+        "play_count": 130,
+        "fail_count": 46,
+        "max_combo": 221,
+        "replays_watched": 0,
+        "total_marv": 21989,
+        "total_perf": 14456,
+        "total_great": 4872,
+        "total_good": 1213,
+        "total_okay": 398,
+        "total_miss": 2222,
+        "total_pauses": 0,
+        "multiplayer_wins": 3,
+        "multiplayer_losses": 9,
+        "multiplayer_ties": 2,
+        "count_grade_x": 0,
+        "count_grade_ss": 4,
+        "count_grade_s": 10,
+        "count_grade_a": 19,
+        "count_grade_b": 23,
+        "count_grade_c": 2,
+        "count_grade_d": 0
+      }
+    }
   }
+]

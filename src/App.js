@@ -5,7 +5,8 @@ function App() {
   const testUser = require('./testUser.json')
   return (
     <div className="App">
-      <ProfileCard data={testUser} />
+      <ProfileCard data={testUser[0]} />
+      <ProfileCard data={testUser[1]} />
     </div>
   );
 }
