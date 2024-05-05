@@ -8,8 +8,9 @@ let Guilds = {}
 async function fetchGuildData() {
     try {
         console.log("Fetching guild data");
-        const response = await fetch("https://raw.githubusercontent.com/Crypto-Path/RhythmGameQuildData/main/Data.json");
+        const response = await fetch("https://api.cyphemercury.online/data.json");
         const data = await response.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.error("Error fetching guild data:", error);
@@ -53,14 +54,14 @@ async function getScores(list = undefined /* Custom user list for "usernames" se
 
     try {
         // Map each username to a promise that fetches user data
-        const userPromises = usernames.map(async (username) => {
+        const userPromises = usernames.map(async (profile) => {
+            //console.log(profile.info.username)
             let index = 0;
-            const trimmedUsername = username.trim();
-            const url = `${baseUrl}/users/full/${trimmedUsername}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            const user = new User(data.user, url);
-            user.id = username;
+            const trimmedUsername = profile.info.username.trim();
+            const url = `${baseUrl}/users/full/${profile.info.username}`;
+            const data = profile;
+            const user = new User(data, url);
+            user.id = profile.info.username;
             users.push(user);
             user.createUserUI();
             guildScore += user.totalScore;
