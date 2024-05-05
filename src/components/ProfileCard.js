@@ -136,7 +136,7 @@ export const ProfileCard = ({data, profileUrl}) => {
         <>
             <div class="user box-shadow">
                 <div class="user-info-basic box-shadow">
-                    <img class="user=pfp box-shadow" src={user.pfp} alt="Profile" />
+                    <img class="user-pfp box-shadow" src={user.pfp} alt="Profile" />
                     <div id={`status-${user.id}`} class="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div>
                     <a class="user-name" href={user.profile} >
                         {user.username}
