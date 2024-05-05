@@ -299,5 +299,153 @@
         "count_grade_d": 0
       }
     }
+  },
+  {
+  "info": {
+    "id": 31771,
+    "steam_id": "76561198414881166",
+    "username": "ATP Myths",
+    "time_registered": "2020-07-23T00:24:39.314Z",
+    "allowed": 1,
+    "privileges": 1,
+    "usergroups": 257,
+    "mute_endtime": "1970-01-01T00:00:00.000Z",
+    "latest_activity": "2024-05-05T18:37:51.016Z",
+    "country": "GB",
+    "avatar_url": "https://avatars.steamstatic.com/4cf570dce76d38479deb805f6dafb9bc0e0fd839_full.jpg",
+    "userpage": "That one accuracy player and Monika enjoyer \r\n\r\n[img]https://cdn.discordapp.com/attachments/850108235775475713/997749145911689277/1.png[/img][url=https://quavergame.com/user/52842][img]https://cdn.discordapp.com/attachments/850108235775475713/997749151796305930/2.png[/img][/url][url=https://quavergame.com/user/109839][img]https://cdn.discordapp.com/attachments/850108235775475713/997749157156634695/3.png[/img][/url][img]https://cdn.discordapp.com/attachments/850108235775475713/997749163859120148/4.png[/img]\r\n[url=https://quavergame.com/user/265][img]https://cdn.discordapp.com/attachments/850108235775475713/997752449915949087/5.png[/img][/url][url=https://quavergame.com/user/232386][img]https://cdn.discordapp.com/attachments/850108235775475713/997750662630739998/6.png[/img][/url][url=https://quavergame.com/user/23389][img]https://cdn.discordapp.com/attachments/850108235775475713/997755310590664724/7.png[/img][/url][url=https://quavergame.com/user/207925][img]https://cdn.discordapp.com/attachments/850108235775475713/997753167351652402/8.png[/img][/url][url=https://quavergame.com/user/175204][img]https://cdn.discordapp.com/attachments/850108235775475713/997753174834294869/9.png[/img][/url][url=https://quavergame.com/user/31771][img]https://cdn.discordapp.com/attachments/850108235775475713/997756273619648553/10.png[/img][/url]\r\n\r\n[url=https://quavergame.com/user/292803][img]https://i.ibb.co/2W7RC1R/laptusacrop-4-45.png[/img][/url][url=https://quavergame.com/user/259321][img]https://i.ibb.co/8BNWc27/fredcrop-4-45.png[/img][/url][url=https://quavergame.com/user/63656][img]https://i.ibb.co/xYyTJXg/alycacrop-5-45.png[/img][/url][url=https://quavergame.com/user/160548][img]https://i.ibb.co/MSfdGfZ/flurcrop-4-45.png[/img][/url][url=https://quavergame.com/user/52842][img]https://i.ibb.co/85JM437/zemabcrop1-4-45.png[/img][/url]\r\n\r\n[url=https://quavergame.com/user/31771][img]https://i.ibb.co/6Y6fMM8/mythscrop-4-45.png[/img][/url][url=https://quavergame.com/user/175204][img]https://i.ibb.co/kQQytzv/vixencrop-4-45.png[/img][/url][url=https://quavergame.com/user/109839][img]https://i.ibb.co/DrRX9BH/mythicalcrop-4-45.png[/img][/url][url=https://quavergame.com/user/145838][img]https://i.ibb.co/GTW42KS/zyrtycrop-4-45.png[/img][/url][url=https://quavergame.com/user/232386][img]https://i.ibb.co/4MFdYt4/flamecrop-4-45.png[/img][/url][url=https://quavergame.com/user/52842][img]https://i.ibb.co/6JP9VN9/zemabcrop2-4-45.png[/img][/url]\r\n[url=https://ibb.co/bWp9PFK][img]https://i.ibb.co/znKvrF4/unknown.png[/img][/url]\r\n\r\n[url=https://ibb.co/308L0Yg][img]https://i.ibb.co/Xzdvzkc/unknown-3.png[/img][/url]\r\n\r\n\r\nIf you have scrolled this far I hope your day is amazing <3",
+    "information": {
+      "discord": "Myths#1209",
+      "twitter": "DistinctMyths",
+      "twitch": "DistinctMyths",
+      "youtube": "https://www.youtube.com/channel/UC4JZ6hfJF4oDQecL_IspbgQ",
+      "notif_action_mapset": false,
+      "default_mode": 1
+    },
+    "userpage_disabled": 0,
+    "clan_id": null,
+    "online": false
+  },
+  "profile_badges": [
+    {
+      "id": 3,
+      "name": "Donator",
+      "description": "Generously supported Quaver by making a donation"
+    }
+  ],
+  "activity_feed": [
+    {
+      "id": 2441993,
+      "type": 8,
+      "timestamp": "2024-04-22T09:22:00.656Z",
+      "map": {
+        "id": -1,
+        "name": "Donated to Quaver!"
+      }
+    },
+    {
+      "id": 2201671,
+      "type": 6,
+      "timestamp": "2023-10-16T22:42:38.017Z",
+      "map": {
+        "id": 125165,
+        "name": "Wataten*5 - Kimama na Tenshitachi (kanemiko's stupid bootleg) [stupid normal with revv]"
+      }
+    },
+    {
+      "id": 2201530,
+      "type": 5,
+      "timestamp": "2023-10-16T19:27:50.934Z",
+      "map": {
+        "id": 125165,
+        "name": "Wataten*5 - Kimama na Tenshitachi (kanemiko's stupid bootleg) [stupid normal with revv]"
+      }
+    },
+    {
+      "id": 2179260,
+      "type": 8,
+      "timestamp": "2023-09-25T19:59:19.298Z",
+      "map": {
+        "id": -1,
+        "name": "Donated to Quaver!"
+      }
+    },
+    {
+      "id": 2174106,
+      "type": 6,
+      "timestamp": "2023-09-21T17:48:18.104Z",
+      "map": {
+        "id": 124096,
+        "name": "Icon For Hire - Make a Move (Sped Up & Cut Ver.) [Moca's Another]"
+      }
+    }
+  ],
+  "clan": null,
+  "keys4": {
+    "globalRank": 91,
+    "countryRank": 7,
+    "multiplayerWinRank": 50,
+    "stats": {
+      "user_id": 31771,
+      "total_score": 6843444535,
+      "ranked_score": 2148696432,
+      "overall_accuracy": 99.6709683084772,
+      "overall_performance_rating": 878.2644580806757,
+      "play_count": 8136,
+      "fail_count": 1108,
+      "max_combo": 10027,
+      "replays_watched": 0,
+      "total_marv": 19078236,
+      "total_perf": 5136054,
+      "total_great": 785808,
+      "total_good": 167320,
+      "total_okay": 50673,
+      "total_miss": 186876,
+      "total_pauses": 0,
+      "multiplayer_wins": 925,
+      "multiplayer_losses": 1586,
+      "multiplayer_ties": 99,
+      "count_grade_x": 1,
+      "count_grade_ss": 673,
+      "count_grade_s": 582,
+      "count_grade_a": 76,
+      "count_grade_b": 17,
+      "count_grade_c": 4,
+      "count_grade_d": 1
+    }
+  },
+  "keys7": {
+    "globalRank": 492702,
+    "countryRank": 19251,
+    "multiplayerWinRank": 437747,
+    "stats": {
+      "user_id": 31771,
+      "total_score": 0,
+      "ranked_score": 0,
+      "overall_accuracy": 0,
+      "overall_performance_rating": 0,
+      "play_count": 0,
+      "fail_count": 0,
+      "max_combo": 0,
+      "replays_watched": 0,
+      "total_marv": 90,
+      "total_perf": 54,
+      "total_great": 5,
+      "total_good": 3,
+      "total_okay": 1,
+      "total_miss": 18,
+      "total_pauses": 0,
+      "multiplayer_wins": 0,
+      "multiplayer_losses": 0,
+      "multiplayer_ties": 0,
+      "count_grade_x": 0,
+      "count_grade_ss": 0,
+      "count_grade_s": 0,
+      "count_grade_a": 0,
+      "count_grade_b": 0,
+      "count_grade_c": 0,
+      "count_grade_d": 0
+    }
   }
+}
 ]
