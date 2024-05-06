@@ -136,19 +136,19 @@ export const ProfileCard = ({data}) => {
         <>
             <div className="user box-shadow">
                 <div className="user-info-basic box-shadow">
-                    <img className="user-pfp box-shadow" src={user.pfp} alt="Profile" />
+                    <img className="user-pfp box-shadow" src={user.pfp} alt="PFP" />
                     <div id={`status-${user.id}`} className="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div>
                     <a className="user-name" href={user.profile} >
                         {user.username}
                     </a>
-                    <a href="#">
+                    <span className='link-like'>
                         {(getRank(user.overallPerformance)[0] === "Herald" && getAccuracyRank(user.overallAccuracy)[0] === "Sage") ? "Monarch" : getRank(user.overallPerformance * (user.overallAccuracy + 2) / 100)[0]}
-                    </a>
+                    </span>
                 </div>
                 <div className="user-score">
                     <p>Performance : {formatNumber(user.overallPerformance, 4)}p ({getRank(user.overallPerformance)[0]}{formatNumber(Math.floor(user.overallPerformance), 0) === 727 ? " WYSI" : ""}) </p>
                     <p>Accuracy : {formatNumber(user.overallAccuracy, 4)}% ({getAccuracyRank(user.overallAccuracy)[0]}) </p>
-                    <p>Score : {formatNumber(user.rankedScore)} <a>({formatNumber(user.playCount)} plays)</a></p>
+                    <p>Score : {formatNumber(user.rankedScore)} <span className='link-like'>({formatNumber(user.playCount)} plays)</span></p>
                 </div>
                 <div className="user-score">
                     <p>Rating : {formatNumber(user.rating)}</p>
