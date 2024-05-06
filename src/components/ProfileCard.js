@@ -68,7 +68,7 @@ function getAccuracyRank(accuracy) {
     let a = 0;
 
     for (let i = 1; i < ranks.length; i++) {
-        const element = ranks[i];
+        // const element = ranks[i];
         const reqa = l - b;
         const reqb = Math.pow(n,i*Math.pow(p,c));
         const reqc = l-(reqa/reqb);
@@ -84,7 +84,7 @@ function getAccuracyRank(accuracy) {
     return [ranks[index], a];
   }
 
-export const ProfileCard = ({data, profileUrl}) => {
+export const ProfileCard = ({data}) => {
     // param User is passed in as an object from the Quaver API
     // transform into custom object with custom labels:
     const user = {

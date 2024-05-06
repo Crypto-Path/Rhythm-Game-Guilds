@@ -8,31 +8,40 @@ const getUsersByGuild = async () => {
   return await apiCall("https://api.cyphemercury.online/data.json")
 }
 
-const guilds = await getUsersByGuild();
-
 function App() {
-  // const testUser = require('./testUser.json')
-  let userList = [];
-  console.log(Object.keys(guilds).length)
-  Object.keys(guilds).map(elem => {
-    if (guilds[elem].Members.length > 0) {
-      userList.push(...guilds[elem].Members)
-      console.log(`${elem}: added ${guilds[elem].Members.length} users to the list`)
-    } else {
-      console.log(`Guild ${elem} is empty.`)
-    }
-  })
+  const [userSearchQuery, setUserSearchQuery] = React.useState('');
+  const [userSearchResults, setUserSearchResults] = React.useState([]);
+  const [userList, setUserList] = React.useState([]);
+  
+  React.useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const guildsData = await getUsersByGuild();
+        let usersToAdd = [];
+        if (userSearchResults.length > 0) {
+          usersToAdd = await Promise.all(userSearchResults.map(async elem => {
+            const userData = await apiCall(`https://api.quavergame.com/v1/users/full/${elem.id}`);
+            return userData.user;
+          }));
+        } else {
+          usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
+        }
+        setUserList(usersToAdd);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
 
-  // Iterate over the data json file passed in and add ProfileCards for all users
-  let userCards = [];
-  for (let i = 0; i < userList.length; i++) {
-    userCards[i] = <ProfileCard data={userList[i]} />
-  }
+    fetchUsers();
+  }, [userSearchResults]);
 
   return (
     <div className="App">
-      <SearchBar></SearchBar>
-      {userCards.length > 0 ? userCards : "error with da users"}
+      <SearchBar query={userSearchQuery} setQuery={setUserSearchQuery} results={userSearchResults} setResults={setUserSearchResults}></SearchBar>
+      <br />
+      {userList.length > 0 ? (
+        userList.map(user => <ProfileCard key={user.id} data={user} />)
+      ) : "error with da users"}
     </div>
   );
 }

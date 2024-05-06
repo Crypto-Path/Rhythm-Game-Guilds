@@ -1,28 +1,34 @@
 import * as React from 'react';
 import { apiCall } from '../functions/apiCall';
 
-export const SearchBar = ({query = "ARG", onChange}) => {
-  const [searchText, setSearchText] = React.useState('');
-  const [results, setResults] = React.useState('');
-  //const foundVideos = filterVideos(videos, searchText);
+export const SearchBar = ({query, setQuery, results, setResults}) => {
+
+  const fetchResults = React.useCallback(async (query) => {
+    try {
+      console.log(`Searching for ${query}...`);
+      const tempResults = await apiCall(`https://api.quavergame.com/v1/users/search/${query}`);
+      setResults(tempResults.users);
+    } catch (error) {
+      console.error("Error fetching results:", error);
+      setResults([]);
+    }
+  }, [setResults]);
 
   React.useEffect(() => {
-    const getResults = async () => {
-        const tempResults = await apiCall(url);
-        setResults(tempResults);
-    };
+    const timer = setTimeout(() => {
+      if (query.trim()) {
+        fetchResults(query.trim());
+      } else {
+        setResults([]);
+      }
+    }, 500);
 
-    getResults();
-  }, []);
-
-    const url = `https://api.quavergame.com/v1/users/search/${query}`;
-     
-
-    console.log(results)
+    return () => clearTimeout(timer);
+  }, [fetchResults, query, setResults]);
 
   return (
     <>
-      <div>bar</div>
+      <input type="text" id="searchbar" placeholder="Search users..." value={query} onChange={e => setQuery(e.target.value)}/>
     </>
   );
 }
