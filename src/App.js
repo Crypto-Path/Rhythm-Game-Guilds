@@ -1,6 +1,7 @@
 import * as React from "react";
 import './App.css';
 import { ProfileCard } from './components/ProfileCard';
+import { SearchBar } from './components/SearchBar';
 import { apiCall } from "./functions/apiCall";
 
 const getUsersByGuild = async () => {
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="App">
+      <SearchBar></SearchBar>
       {userCards.length > 0 ? userCards : "error with da users"}
     </div>
   );
