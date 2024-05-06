@@ -134,29 +134,29 @@ export const ProfileCard = ({data, profileUrl}) => {
 
     return (
         <>
-            <div class="user box-shadow">
-                <div class="user-info-basic box-shadow">
-                    <img class="user-pfp box-shadow" src={user.pfp} alt="Profile" />
-                    <div id={`status-${user.id}`} class="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div>
-                    <a class="user-name" href={user.profile} >
+            <div className="user box-shadow">
+                <div className="user-info-basic box-shadow">
+                    <img className="user-pfp box-shadow" src={user.pfp} alt="Profile" />
+                    <div id={`status-${user.id}`} className="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div>
+                    <a className="user-name" href={user.profile} >
                         {user.username}
                     </a>
                     <a href="#">
                         {(getRank(user.overallPerformance)[0] === "Herald" && getAccuracyRank(user.overallAccuracy)[0] === "Sage") ? "Monarch" : getRank(user.overallPerformance * (user.overallAccuracy + 2) / 100)[0]}
                     </a>
                 </div>
-                <div class="user-score">
+                <div className="user-score">
                     <p>Performance : {formatNumber(user.overallPerformance, 4)}p ({getRank(user.overallPerformance)[0]}{formatNumber(Math.floor(user.overallPerformance), 0) === 727 ? " WYSI" : ""}) </p>
                     <p>Accuracy : {formatNumber(user.overallAccuracy, 4)}% ({getAccuracyRank(user.overallAccuracy)[0]}) </p>
                     <p>Score : {formatNumber(user.rankedScore)} <a>({formatNumber(user.playCount)} plays)</a></p>
                 </div>
-                <div class="user-score">
+                <div className="user-score">
                     <p>Rating : {formatNumber(user.rating)}</p>
                     <p>Bonus : {formatNumber(user.bonus)}</p>
                     <p>Consistency : {formatNumber(user.consistency)}</p>
                     <p>Value : {formatNumber(user.val)}</p>
                 </div>
-                <div class="user-score">
+                <div className="user-score">
                     <p>Notes hit: {formatNumber(user.totalHits)}</p>
                 </div>
             </div>
