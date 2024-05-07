@@ -38,28 +38,6 @@ button.disabled-btn {
   flex-wrap: wrap;
 }
 
-#guildInfo {
-  width: 16rem;
-  background-color: rgba(127, 127, 127, 0.5);
-  border-radius: 2rem;
-  margin: 1rem;
-  padding: 1rem;
-  position: sticky; /* Change position to sticky */
-  top: 20px; /* Adjust top position according to your preference */
-  z-index: 1; /* Ensure it appears above other elements */
-}
-
-#guildInfoContent {
-  width: 16rem;
-  background-color: rgba(25, 25, 25, 0.66);
-  border-radius: 2rem;
-  padding: 1rem;
-  margin: -1rem;
-  
-  overflow-y: auto;
-  position: fixed; /* Keep the content fixed relative to the viewport */
-}
-
 #Search {
 }
 
@@ -92,10 +70,6 @@ button.disabled-btn {
     max-height: calc(100vh);
     overflow-y: auto;
     position: fixed;
-}
-
-.container-guild {
-  display: flex;
 }
 
 .user {
@@ -194,16 +168,66 @@ button.disabled-btn {
   color: #fff;
 }
 
+#guildInfo {
+  width: 16rem;
+  background-color: rgba(127, 127, 127, 0.5);
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+  position: sticky; /* Change position to sticky */
+  top: 20px; /* Adjust top position according to your preference */
+  z-index: 1; /* Ensure it appears above other elements */
+}
+
+#guildInfoContent {
+  width: 16rem;
+  background-color: rgba(25, 25, 25, 0.66);
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: -1rem;
+  
+  overflow-y: auto;
+  position: fixed; /* Keep the content fixed relative to the viewport */
+}
+
+.container-guild {
+  display: flex;
+}
+
+.guild-name {
+  text-decoration: none;
+  font-size: 24px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.guild-subtitle {
+  text-decoration: none;
+  float: left;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.guild-desc {
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+  line-height: 10px;
+}
+
 .guild-banner {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
 }
 
-.guild-desc {
-  font-size: 12px;
-  display: inline-block;
-  line-height: 10px;
+.guild {
+  text-decoration: none;
+}
+
+.guild-stat {
+  text-decoration: none;
+  float: left; 
 }
 
 .flex {

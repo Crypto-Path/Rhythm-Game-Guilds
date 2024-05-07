@@ -1,7 +1,7 @@
 import * as React from "react";
 import './App.css';
 import { ProfileCard } from './components/ProfileCard';
-import { GuildCard } from './components/GuildCard';
+import { GuildPanel } from './components/GuildPanel';
 import { SearchBar } from './components/SearchBar';
 import { Background } from './components/Background';
 import { apiCall } from "./functions/apiCall";
@@ -60,7 +60,7 @@ function App() {
             userList.map(user => <ProfileCard key={user.id} data={user} />)
           ) : "error with da users"}
         </div>
-        <GuildCard></GuildCard>
+        <GuildPanel></GuildPanel>
       </div>
     </div>
   );
