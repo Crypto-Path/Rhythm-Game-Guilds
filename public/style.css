@@ -221,6 +221,22 @@ button.disabled-btn {
   border-radius: 2rem;
 }
 
+.searchbar {
+  width: 32rem;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 2rem;
+  background-color: rgba(50, 50, 50, 0.5);
+  border-radius: 2rem;
+  color: white;
+}
+
+.search-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     font-size: 14px;
