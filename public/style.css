@@ -94,13 +94,19 @@ button.disabled-btn {
 .user-info-basic {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   background-color: rgba(75, 75, 75, 0.75);
   border-radius: 16px;
 }
 
 .user-info-basic.grid {
   flex-direction: column;
+}
+
+.user-info-id {
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .user-name {
@@ -120,6 +126,11 @@ button.disabled-btn {
 .user-pfp.grid {
   width: 12rem;
   border-radius: 2rem;
+}
+
+.user-guild-tag {
+  font-family: "Courier New";
+  font-size: 24px;
 }
 
 .user-score {

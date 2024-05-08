@@ -1,10 +1,7 @@
 import * as React from "react";
 import './App.css';
-import { ProfileCard } from './components/ProfileCard';
-import { GuildPanel } from './components/GuildPanel';
-import { SearchBar } from './components/SearchBar';
-import { Background } from './components/Background';
 import { apiCall } from "./functions/apiCall";
+import { Background, GuildPanel, ProfileCard, SearchContainer } from "./components/index";
 
 const getUsersByGuild = async () => {
   return await apiCall("https://api.cyphemercury.online/data.json")
@@ -14,11 +11,13 @@ function App() {
   const [userSearchQuery, setUserSearchQuery] = React.useState('');
   const [userSearchResults, setUserSearchResults] = React.useState([]);
   const [userList, setUserList] = React.useState([]);
+  const guildKeys = React.useRef([])
   
   React.useEffect(() => {
     const fetchUsers = async () => {
       try {
         const guildsData = await getUsersByGuild();
+        guildKeys.current = Object.keys(guildsData)
         let usersToAdd = [];
         if (userSearchResults.length > 0) {
           console.log("User Search Results:", userSearchResults)
@@ -26,7 +25,7 @@ function App() {
             const userData = await apiCall(`https://api.quavergame.com/v1/users/full/${elem.id}`);
             return userData.user;
           }));
-        } else {
+        } else {    // The below is ran if there is no search query as the "default" return.
           /* TODO:
            * Get guild members from either all guilds, or on specific guild
            * Set up another "class" object thingy? for Listing, Sorting, and Grouping
@@ -38,6 +37,15 @@ function App() {
            * 
            * Using this as a marker so I can remember where the main guilds listing is
            */
+          
+          Object.keys(guildsData).forEach((g, i) => {
+            guildsData[g].Members.forEach((m, mi) => {
+              guildsData[g].Members[mi].guild = Object.keys(guildsData)[i]
+            })
+          })
+
+          console.debug("guildsData", guildsData);
+
           usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
         }
         setUserList(usersToAdd);
@@ -52,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <Background></Background>
-      <SearchBar query={userSearchQuery} setQuery={setUserSearchQuery} results={userSearchResults} setResults={setUserSearchResults}></SearchBar>
+      <SearchContainer query={userSearchQuery} setQuery={setUserSearchQuery} setResults={setUserSearchResults} guildKeys={guildKeys.current} />
       <br />
       <div className="container-guild">
         <div className="userList">

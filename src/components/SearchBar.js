@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { apiCall } from '../functions/apiCall';
 
-export const SearchBar = ({query, setQuery, results, setResults}) => {
+export const SearchBar = ({query, setQuery, setResults}) => {
 
   const fetchResults = React.useCallback(async (query) => {
     try {
