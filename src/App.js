@@ -14,6 +14,18 @@ function App() {
   const guildKeys = React.useRef([])
   
   React.useEffect(() => {
+    const addGuildKey = (guildsObject, user) => {
+      let targetGk = "";
+        if (Object.keys(guildsObject).find(gk => {
+            targetGk = gk;
+            return guildsObject[gk].Members.find((m, mi, ma) => ma[mi].info.id === user.info.id);
+          })) {
+          user.guild = targetGk;
+        } else {
+          user.guild = "";
+        }
+    }
+
     const fetchUsers = async () => {
       try {
         const guildsData = await getUsersByGuild();
@@ -23,6 +35,7 @@ function App() {
           console.log("User Search Results:", userSearchResults)
           usersToAdd = await Promise.all(userSearchResults.map(async elem => {
             const userData = await apiCall(`https://api.quavergame.com/v1/users/full/${elem.id}`);
+            addGuildKey(guildsData, userData.user)
             return userData.user;
           }));
         } else {    // The below is ran if there is no search query as the "default" return.
@@ -39,12 +52,10 @@ function App() {
            */
           
           Object.keys(guildsData).forEach((g, i) => {
-            guildsData[g].Members.forEach((m, mi) => {
-              guildsData[g].Members[mi].guild = Object.keys(guildsData)[i]
+            guildsData[g].Members.forEach((m, mi, ma) => {
+              ma[mi].guild = Object.keys(guildsData)[i]
             })
           })
-
-          console.debug("guildsData", guildsData);
 
           usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
         }

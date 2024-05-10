@@ -11,17 +11,17 @@ export const GuildPanel = ({GuildBanner = "https://api.cyphemercury.online/image
         <>
         <div id="guildInfo">
             <div className="guild guild-panel box-shadow" id="guildInfoContent">
-                <img className="guild-banner" src={GuildBanner} /> <br/>
-                <a className="guild-name">{GuildName} (ARG{/*GuildKey*/})</a> <br/>
-                <a className="guild-desc">{description}</a> <br/>
-                <a className="guild-subtitle">Stats</a> <br/>
+                <img className="guild-banner" alt="" src={GuildBanner} /> <br/>
+                <span className="guild-name link-like">{GuildName} (ARG{/*GuildKey*/})</span> <br/>
+                <span className="guild-desc link-like">{description}</span> <br/>
+                <span className="guild-subtitle link-like">Stats</span> <br/>
                 <div className="guild-container-stats">
-                    <a className="guild-stat">Overall Performance: {} (avg. {}) (mean. {})</a> <br/>
-                    <a className="guild-stat">Overall Score: {} (avg. {}) (mean. {})</a> <br/>
-                    <a className="guild-stat">Overall Accuracy: {} (avg. {}) (mean. {})</a> <br/>
-                    <a className="guild-stat">Plays Count: {} (avg. {}) (mean. {})</a> <br/>
-                    <a className="guild-stat">Notes Hit: {} (avg. {}) (mean. {})</a> <br/>
-                    <a className="guild-stat">Members: {}</a> <br/>
+                    <span className="guild-stat link-like">Overall Performance: {} (avg. {}) (mean. {})</span> <br/>
+                    <span className="guild-stat">Overall Score: {} (avg. {}) (mean. {})</span> <br/>
+                    <span className="guild-stat link-like">Overall Accuracy: {} (avg. {}) (mean. {})</span> <br/>
+                    <span className="guild-stat link-like">Plays Count: {} (avg. {}) (mean. {})</span> <br/>
+                    <span className="guild-stat link-like">Notes Hit: {} (avg. {}) (mean. {})</span> <br/>
+                    <span className="guild-stat link-like">Members: {}</span> <br/>
                 </div>
             </div>
         </div>

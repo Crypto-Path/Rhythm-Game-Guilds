@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { apiCall } from '../functions/apiCall';
+import { apiCall } from '../functions/index';
 
 export const SearchBar = ({query, setQuery, setResults}) => {
 

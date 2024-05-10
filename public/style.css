@@ -38,8 +38,8 @@ button.disabled-btn {
   flex-wrap: wrap;
 }
 
-#Search {
-}
+/* #Search { /* What were we gonna use this for? *\/
+} */
 
 #Background {
   position: absolute;
