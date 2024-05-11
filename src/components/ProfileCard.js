@@ -85,8 +85,8 @@ function getAccuracyRank(accuracy) {
   }
 
 export const ProfileCard = ({data}) => {
-    // param User is passed in as an object from the Quaver API
-    // transform into custom object with custom labels:
+    // param data is passed in as an object from the Quaver API
+    // then, we transform into custom object with custom labels:
     const user = {
         // Info
         id: data.info.id,

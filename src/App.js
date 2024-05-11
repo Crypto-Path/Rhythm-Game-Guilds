@@ -2,6 +2,7 @@ import * as React from "react";
 import './App.css';
 import { apiCall } from "./functions/apiCall";
 import { Background, GuildPanel, ProfileCard, SearchContainer } from "./components/index";
+import { filterUsersCX } from "./components/context";
 
 const getUsersByGuild = async () => {
   return await apiCall("https://api.cyphemercury.online/data.json")
@@ -11,9 +12,11 @@ function App() {
   const [userSearchQuery, setUserSearchQuery] = React.useState('');
   const [userSearchResults, setUserSearchResults] = React.useState([]);
   const [userList, setUserList] = React.useState([]);
+  const [filteredUsers, setFilteredUsers] = React.useState([]);
   const guildKeys = React.useRef([])
   
   React.useEffect(() => {
+    // This function is for adding guild identifiers to searched users
     const addGuildKey = (guildsObject, user) => {
       let targetGk = "";
         if (Object.keys(guildsObject).find(gk => {
@@ -51,6 +54,7 @@ function App() {
            * Using this as a marker so I can remember where the main guilds listing is
            */
           
+          // Add the guild identifier to the user object:
           Object.keys(guildsData).forEach((g, i) => {
             guildsData[g].Members.forEach((m, mi, ma) => {
               ma[mi].guild = Object.keys(guildsData)[i]
@@ -58,6 +62,7 @@ function App() {
           })
 
           usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
+          setFilteredUsers(usersToAdd);
         }
         setUserList(usersToAdd);
       } catch (error) {
@@ -68,15 +73,48 @@ function App() {
     fetchUsers();
   }, [userSearchResults]);
 
+  const filterUsers = e => {
+    const key = e.target.parentNode.previousSibling.textContent;
+    const value = e.target.textContent;
+  
+    switch (key) {
+        case "Guild:": {
+          switch (value) {
+            case "All": {
+              setFilteredUsers(userList);
+              break;
+            } default: {
+                setFilteredUsers(userList.filter(user => user.guild === value));
+                break;
+            }
+          }
+          break;
+        }
+        case "Sort by:": {
+          console.debug(`Sort is not currently working. Thank you for selecting "${key} ${value}".`)
+          break;
+        }
+        default: {
+          setFilteredUsers(userList);
+          break;
+        }
+    }
+  }
+
   return (
     <div className="App">
-      <Background></Background>
-      <SearchContainer query={userSearchQuery} setQuery={setUserSearchQuery} setResults={setUserSearchResults} guildKeys={guildKeys.current} />
+      <Background />
+      <filterUsersCX.Provider value={filterUsers}>
+        <SearchContainer query={userSearchQuery}
+                        setQuery={setUserSearchQuery}
+                        setResults={setUserSearchResults}
+                        guildKeys={guildKeys.current} />
+      </filterUsersCX.Provider>
       <br />
       <div className="container-guild">
         <div className="userList">
-          {userList.length > 0 ? (
-            userList.map(user => <ProfileCard key={user.id} data={user} />)
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map(user => <ProfileCard key={user.id} data={user} />)
           ) : "error with da users"}
         </div>
         <GuildPanel></GuildPanel>
