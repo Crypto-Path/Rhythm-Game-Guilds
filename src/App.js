@@ -76,6 +76,9 @@ function App() {
   const filterUsers = e => {
     const key = e.target.parentNode.previousSibling.textContent;
     const value = e.target.textContent;
+    e.target.parentNode.childNodes.forEach(child => child.classList.contains("selected") && child.classList.remove("selected"));
+    e.target.classList.add("selected");
+    console.debug(e);
   
     switch (key) {
         case "Guild:": {
@@ -92,11 +95,18 @@ function App() {
         }
         case "Sort by:": {
           console.debug(`Sort is not currently working. Thank you for selecting "${key} ${value}".`)
+          switch (value) {
+            case "Username": {
+              setFilteredUsers([...userList.sort((a, b) => a.info.username.localeCompare(b.info.username))])
+              break;
+            } default: {
+              setFilteredUsers([...userList.sort((a, b) => a.info.username.localeCompare(b.info.username))])
+            }
+          }
           break;
         }
         default: {
-          setFilteredUsers(userList);
-          break;
+          setFilteredUsers(userList.sort((a, b) => a.info.username.localeCompare(b.info.username)));
         }
     }
   }
