@@ -28,7 +28,7 @@ export const SearchBar = ({query, setQuery, setResults}) => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="search-bar-container">
         <input type="text" className="searchbar" placeholder="Search users..." value={query} onChange={e => setQuery(e.target.value)}/>
       </div>
     </>

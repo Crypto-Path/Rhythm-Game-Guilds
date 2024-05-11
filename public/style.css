@@ -180,6 +180,8 @@ button.disabled-btn {
 }
 
 #guildInfo {
+  margin-left: 3rem !important;
+  
   width: 16rem;
   background-color: rgba(127, 127, 127, 0.5);
   border-radius: 2rem;
@@ -257,7 +259,8 @@ button.disabled-btn {
 }
 
 .searchbar {
-  width: 32rem;
+  width: -webkit-fill-available;
+  width: -moz-available;
   max-height: 220px;
   overflow-y: auto;
   margin: 10px;
@@ -265,17 +268,31 @@ button.disabled-btn {
   background-color: rgba(50, 50, 50, 0.5);
   border-radius: 2rem;
   color: white;
+  font-size: 1.7rem;
 }
 
 .search-container {
   text-align: center;
   margin-top: 50px;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+  background-color: rgba(127, 127, 127, 0.22);
+  border-radius: 2rem;
+}
+
+.search-bar-container {
+  padding: 0 5% 0 5%;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+  background-color: rgba(127, 127, 127, 0.22);
+  border-radius: 2rem;
 }
 
 .filter {
   display: grid;
   grid: 100% / 10% 90%;
   gap: 16px;
+  font-size: 1.35rem;
 }
 
 .filter-title {
@@ -291,6 +308,16 @@ button.disabled-btn {
 
 .filter-option {
   padding-right: 12px;
+}
+
+.filter-option:hover {
+  color: rgb(200, 200, 200);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.filter-container {
+  /*spread out text and fix the searchbar text size!*/
 }
 
 @media only screen and (max-width: 768px) {
