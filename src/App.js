@@ -41,6 +41,12 @@ function App() {
             addGuildKey(guildsData, userData.user)
             return userData.user;
           }));
+          document.querySelectorAll(".filter").forEach(e => {
+            if (e.firstChild.textContent === "Guild:") e.childNodes[1].childNodes.forEach(c => {
+              if (c.classList.contains("selected")) c.classList.remove("selected");
+              if (c.textContent === "All" && !c.classList.contains("selected")) c.classList.add("selected"); 
+            })
+          })
         } else {    // The below is ran if there is no search query as the "default" return.
           /* TODO:
            * Get guild members from either all guilds, or on specific guild
@@ -62,9 +68,9 @@ function App() {
           })
 
           usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
-          setFilteredUsers(usersToAdd);
         }
         setUserList(usersToAdd);
+        setFilteredUsers(usersToAdd);
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -168,7 +174,6 @@ function App() {
         }
 
         default: {
-          console.debug(`Sort is not currently working. Thank you for selecting "${key} ${value}".`);
           setFilteredUsers(userList.sort((a, b) => a.info.username.localeCompare(b.info.username)));
         }
     }
