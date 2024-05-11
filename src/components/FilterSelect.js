@@ -4,26 +4,20 @@ import { filterUsersCX } from "./context";
 export const FilterSelect = ({options, type}) => {
     const filterUsers = React.useContext(filterUsersCX)
     
-    /*
-    const sortUsers = (parameter, order = 1) => {
-        const users = Array.from(document.querySelectorAll('.user'));
-    
-        users.sort((a, b) => {
-            const valueA = getValue(a, parameter);
-            const valueB = getValue(b, parameter);
-    
-            if (valueA < valueB) {
-                return -1 * order;
+    React.useEffect(() => {
+        document.querySelectorAll(".filter-options-container").forEach(e => {
+            let alrSelected = false;
+            if (e.hasChildNodes()) {
+                for (let i = 0; i < e.childNodes.length; i++) {
+                    if (e.children[i].classList.contains("selected")) {
+                        alrSelected = true;
+                        break;
+                    }
+                }
+                if (!alrSelected) e.firstElementChild.classList.add("selected")
             }
-            if (valueA > valueB) {
-                return 1 * order;
-            }
-            return 0;
-        });    
-        const parent = users[0].parentNode;
-        users.forEach(user => parent.appendChild(user));
-    }
-    */
+        })
+    })
 
     return (
         <>

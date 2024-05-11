@@ -296,7 +296,7 @@ button.disabled-btn {
 }
 
 .filter-title {
-  color: red;
+  color: rgb(200, 200, 200);
   place-self: center end;
 }
 
@@ -318,6 +318,11 @@ button.disabled-btn {
 
 .filter-container {
   /*spread out text and fix the searchbar text size!*/
+}
+
+.selected {
+  color: #a26370;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 768px) {

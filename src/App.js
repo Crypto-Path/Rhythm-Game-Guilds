@@ -78,7 +78,6 @@ function App() {
     const value = e.target.textContent;
     e.target.parentNode.childNodes.forEach(child => child.classList.contains("selected") && child.classList.remove("selected"));
     e.target.classList.add("selected");
-    console.debug(e);
   
     switch (key) {
         case "Guild:": {
