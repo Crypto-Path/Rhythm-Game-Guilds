@@ -101,63 +101,63 @@ function App() {
         case "Sort by:": {
           switch (value) {
             case "Username": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const usernameA = a.info.username;
                 const usernameB = b.info.username;
                 return usernameA.localeCompare(usernameB);
               })]);
               break;
             } case "Performance": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const performanceA = a.keys4.stats.overall_performance_rating;
                 const performanceB = b.keys4.stats.overall_performance_rating;
                 return performanceA - performanceB;
               })]);
               break;
             } case "Accuracy": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const accuracyA = a.keys4.stats.overall_accuracy;
                 const accuracyB = b.keys4.stats.overall_accuracy;
                 return accuracyA - accuracyB;
               })]);
               break;
             } case "Score": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const scoreA = a.keys4.stats.ranked_score;
                 const scoreB = b.keys4.stats.ranked_score;
                 return scoreA - scoreB;
               })]);
               break;
             } case "Play Count": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const pcA = a.keys4.stats.play_count;
                 const pcB = b.keys4.stats.play_count;
                 return pcA - pcB;
               })]);
               break;
             } case "Rating": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const ratingA = a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating;
                 const ratingB = b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating;
                 return ratingA - ratingB;
               })]);
               break;
             } case "Bonus": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const bonusA = 1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01;
                 const bonusB = 1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01;
                 return bonusA - bonusB;
               })]);
               break;
             } case "Consistency": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const consA = Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
                 const consB = Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
                 return consA - consB;
               })]);
               break;
             } case "Value": {
-              setFilteredUsers([...userList.sort((a, b) => {
+              setFilteredUsers([...filteredUsers.sort((a, b) => {
                 const valueA = (a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating) + (1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01) * Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
                 const valueB = (b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating) + (1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01) * Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
                 return valueA - valueB;
@@ -167,7 +167,7 @@ function App() {
             }
             
             default: {
-              setFilteredUsers([...userList.sort((a, b) => a.info.username.localeCompare(b.info.username))]);
+              setFilteredUsers([...filteredUsers.sort((a, b) => a.info.username.localeCompare(b.info.username))]);
             }
           }
           break;
