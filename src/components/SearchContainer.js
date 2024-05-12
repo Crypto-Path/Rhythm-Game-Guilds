@@ -19,6 +19,14 @@ export const SearchContainer = ({query, setQuery, setResults, guildKeys}) => {
         "Descending"
     ];
 
+    const onlineStatus = [
+        "Online",
+        "Playing",
+        "Mapping",
+        "Idle",
+        "Offline"
+    ]
+
     return (
         <>
             <div className="search-container">
@@ -27,6 +35,8 @@ export const SearchContainer = ({query, setQuery, setResults, guildKeys}) => {
                     <FilterSelect options={guildKeys} type={"Guild"} />
                     <FilterSelect options={sortOptions} type={"Sort by"} />
                     <FilterSelect options={sortOrder} type={"Order"} />
+                    {/* Not implemented yet! Just visuals */}
+                    <FilterSelect options={onlineStatus} type={"Status"} />
                 </div>
             </div>
         </>
