@@ -130,7 +130,10 @@ button.disabled-btn {
 
 .user-guild-tag {
   font-family: "Courier New";
-  font-size: 24px;
+  font-size: 32px;
+  font-weight: 550;
+  margin-right: 2rem;
+  text-shadow: rgba(200, 200, 200, 0.67) 3px 3px;
 }
 
 .user-score {
