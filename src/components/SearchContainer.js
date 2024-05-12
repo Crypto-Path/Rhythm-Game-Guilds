@@ -12,7 +12,13 @@ export const SearchContainer = ({query, setQuery, setResults, guildKeys}) => {
         "Bonus",
         "Consistency",
         "Value"
-    ]
+    ];
+
+    const sortOrder = [
+        "Ascending",
+        "Descending"
+    ];
+
     return (
         <>
             <div className="search-container">
@@ -20,6 +26,7 @@ export const SearchContainer = ({query, setQuery, setResults, guildKeys}) => {
                 <div className="filter-container">
                     <FilterSelect options={guildKeys} type={"Guild"} />
                     <FilterSelect options={sortOptions} type={"Sort by"} />
+                    <FilterSelect options={sortOrder} type={"Order"} />
                 </div>
             </div>
         </>

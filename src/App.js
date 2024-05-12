@@ -13,6 +13,7 @@ function App() {
   const [userSearchResults, setUserSearchResults] = React.useState([]);
   const [userList, setUserList] = React.useState([]);
   const [filteredUsers, setFilteredUsers] = React.useState([]);
+  const [sortBy, setSortBy] = React.useState("Username");
   const guildKeys = React.useRef([])
   
   React.useEffect(() => {
@@ -79,6 +80,85 @@ function App() {
     fetchUsers();
   }, [userSearchResults]);
 
+  // ...Sorts the users. Based on what you click. lol
+  const sortUsers = (v, o = true) => {
+    switch (v) {
+      case "Username": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const usernameA = a.info.username;
+          const usernameB = b.info.username;
+          return o ? usernameA.localeCompare(usernameB) : usernameB.localeCompare(usernameA);
+        })]);
+        break;
+      } case "Performance": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const performanceA = a.keys4.stats.overall_performance_rating;
+          const performanceB = b.keys4.stats.overall_performance_rating;
+          return o ? performanceA - performanceB : performanceB - performanceA;
+        })]);
+        break;
+      } case "Accuracy": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const accuracyA = a.keys4.stats.overall_accuracy;
+          const accuracyB = b.keys4.stats.overall_accuracy;
+          return o ? accuracyA - accuracyB : accuracyB - accuracyA;
+        })]);
+        break;
+      } case "Score": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const scoreA = a.keys4.stats.ranked_score;
+          const scoreB = b.keys4.stats.ranked_score;
+          return o ? scoreA - scoreB : scoreB - scoreA;
+        })]);
+        break;
+      } case "Play Count": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const pcA = a.keys4.stats.play_count;
+          const pcB = b.keys4.stats.play_count;
+          return o ? pcA - pcB : pcB - pcA;
+        })]);
+        break;
+      } case "Rating": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const ratingA = a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating;
+          const ratingB = b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating;
+          return o ? ratingA - ratingB : ratingB - ratingA;
+        })]);
+        break;
+      } case "Bonus": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const bonusA = 1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01;
+          const bonusB = 1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01;
+          return o ? bonusA - bonusB : bonusB - bonusA;
+        })]);
+        break;
+      } case "Consistency": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const consA = Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
+          const consB = Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
+          return o ? consA - consB : consB - consA;
+        })]);
+        break;
+      } case "Value": {
+        setFilteredUsers([...filteredUsers.sort((a, b) => {
+          const valueA = (a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating) + (1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01) * Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
+          const valueB = (b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating) + (1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01) * Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
+          return o ? valueA - valueB : valueB - valueA;
+        })]);
+        break; 
+      }
+      
+      default: {
+        setFilteredUsers([...filteredUsers.sort((a, b) => a.info.username.localeCompare(b.info.username))]);
+      }
+    }
+
+  }
+
+  // This is effectively the onclick handler.
+  // It could probably use a better name, though we'll have to update
+  // the CX handler too. At that point we would want to break the filter
+  // itself out into its own filterUsers function.
   const filterUsers = e => {
     const key = e.target.parentNode.previousSibling.textContent;
     const value = e.target.textContent;
@@ -97,77 +177,19 @@ function App() {
             }
           }
           break;
-        }
-        case "Sort by:": {
+        } case "Sort by:": {
+          setSortBy(value);
+          sortUsers(value);
+          break;
+        } case "Order:": {
           switch (value) {
-            case "Username": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const usernameA = a.info.username;
-                const usernameB = b.info.username;
-                return usernameA.localeCompare(usernameB);
-              })]);
+            case "Descending": {
+              sortUsers(sortBy, false);
               break;
-            } case "Performance": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const performanceA = a.keys4.stats.overall_performance_rating;
-                const performanceB = b.keys4.stats.overall_performance_rating;
-                return performanceA - performanceB;
-              })]);
-              break;
-            } case "Accuracy": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const accuracyA = a.keys4.stats.overall_accuracy;
-                const accuracyB = b.keys4.stats.overall_accuracy;
-                return accuracyA - accuracyB;
-              })]);
-              break;
-            } case "Score": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const scoreA = a.keys4.stats.ranked_score;
-                const scoreB = b.keys4.stats.ranked_score;
-                return scoreA - scoreB;
-              })]);
-              break;
-            } case "Play Count": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const pcA = a.keys4.stats.play_count;
-                const pcB = b.keys4.stats.play_count;
-                return pcA - pcB;
-              })]);
-              break;
-            } case "Rating": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const ratingA = a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating;
-                const ratingB = b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating;
-                return ratingA - ratingB;
-              })]);
-              break;
-            } case "Bonus": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const bonusA = 1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01;
-                const bonusB = 1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01;
-                return bonusA - bonusB;
-              })]);
-              break;
-            } case "Consistency": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const consA = Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
-                const consB = Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
-                return consA - consB;
-              })]);
-              break;
-            } case "Value": {
-              setFilteredUsers([...filteredUsers.sort((a, b) => {
-                const valueA = (a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating) + (1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01) * Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
-                const valueB = (b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating) + (1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01) * Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
-                return valueA - valueB;
-              })]);
-              break;
-              
             }
-            
+
             default: {
-              setFilteredUsers([...filteredUsers.sort((a, b) => a.info.username.localeCompare(b.info.username))]);
+              sortUsers(sortBy);
             }
           }
           break;
