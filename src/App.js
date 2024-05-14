@@ -201,6 +201,12 @@ function App() {
     }
   }
 
+  const guildTemp = {
+    banner: "https://api.cyphemercury.online/images/RRG_Banner.png",
+    name: "Rhythm Game Guilds",
+    description: "Epicer Description"
+  }
+
   return (
     <div className="App">
       <Background />
@@ -217,7 +223,7 @@ function App() {
             filteredUsers.map(user => <ProfileCard key={user.id} data={user} />)
           ) : "error with da users"}
         </div>
-        <GuildPanel></GuildPanel>
+        <GuildPanel guildInfo={guildTemp} userList={filteredUsers}></GuildPanel>
       </div>
     </div>
   );
