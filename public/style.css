@@ -133,7 +133,8 @@ button.disabled-btn {
   font-size: 32px;
   font-weight: 550;
   margin-right: 2rem;
-  text-shadow: rgba(200, 200, 200, 0.67) 3px 3px;
+  color:rgb(130, 130, 130);
+  text-shadow: rgba(180, 180, 180) 1.5px 1.5px;
 }
 
 .user-score {
