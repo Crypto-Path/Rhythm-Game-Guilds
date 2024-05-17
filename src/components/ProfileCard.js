@@ -127,11 +127,12 @@ export const ProfileCard = ({data}) => {
     // Add the custom user data:
     user.totalHits = user.hmarvs + user.hperfs + user.hgreats + user.hgoods + user.hokays + user.hmisses;
     user.rating = user.overallAccuracy / 100 * user.overallPerformance;
-    user.bonus = 1 + user.xRanks * 1 + user.ssRanks * 0.05 + user.sRanks * 0.01;
+    user.bonus = 1 + user.xRanks * 0.2 + user.ssRanks * 0.05 + user.sRanks * 0.01;
     user.consistency = Math.log2(user.playCount / (user.failCount + 1) * user.maxCombo);
     user.val = user.rating + user.bonus * user.consistency;
     user.profile = `https://quavergame.com/user/${user.id}`;
     user.guild = data.guild ? data.guild : "" ;
+    user.stage = (getRank(user.overallPerformance)[0] === "Herald" && getAccuracyRank(user.overallAccuracy)[0] === "Sage") ? "Monarch" : getRank(user.overallPerformance * (user.overallAccuracy + 2) / 100)[0];
 
     return (
         <>
@@ -143,8 +144,8 @@ export const ProfileCard = ({data}) => {
                         <a className="user-name" href={user.profile} >
                             {user.username}
                         </a>
-                        <span className='link-like'>
-                            {(getRank(user.overallPerformance)[0] === "Herald" && getAccuracyRank(user.overallAccuracy)[0] === "Sage") ? "Monarch" : getRank(user.overallPerformance * (user.overallAccuracy + 2) / 100)[0]}
+                        <span data-tooltip="custom stages based on Will Wight's novel, Cradle" data-flow="top">
+                            {user.stage}
                         </span>
                     </div>
                     <div className="user-info-guild">
@@ -152,15 +153,15 @@ export const ProfileCard = ({data}) => {
                     </div>
                 </div>
                 <div className="user-score">
-                    <p>Performance : {formatNumber(user.overallPerformance, 4)}p ({getRank(user.overallPerformance)[0]}{formatNumber(Math.floor(user.overallPerformance), 0) === 727 ? " WYSI" : ""}) </p>
-                    <p>Accuracy : {formatNumber(user.overallAccuracy, 4)}% ({getAccuracyRank(user.overallAccuracy)[0]}) </p>
-                    <p>Score : {formatNumber(user.rankedScore)} <span className='link-like'>({formatNumber(user.playCount)} plays)</span></p>
+                    <p data-tooltip="The overall performance of the user" data-flow="top">Performance : {formatNumber(user.overallPerformance, 4)}p ({getRank(user.overallPerformance)[0]}{formatNumber(Math.floor(user.overallPerformance), 0) === 727 ? " WYSI" : ""}) </p>
+                    <p data-tooltip="The overall accuracy of the user" data-flow="top">Accuracy : {formatNumber(user.overallAccuracy, 4)}% ({getAccuracyRank(user.overallAccuracy)[0]}) </p>
+                    <p data-tooltip="The total ranked score of the user" data-flow="top">Score : {formatNumber(user.rankedScore)} ({formatNumber(user.playCount)} plays)</p>
                 </div>
                 <div className="user-score">
-                    <p>Rating : {formatNumber(user.rating)}</p>
-                    <p>Bonus : {formatNumber(user.bonus)}</p>
-                    <p>Consistency : {formatNumber(user.consistency)}</p>
-                    <p>Value : {formatNumber(user.val)}</p>
+                    <p data-tooltip="accuracy * performance" data-flow="top">Rating : {formatNumber(user.rating)}</p>
+                    <p data-tooltip="X*0.2 + SS*0.05 + S*0.01" data-flow="top">Bonus : {formatNumber(user.bonus)}</p>
+                    <p data-tooltip="Log_2(plays / (fails + 1) * maxCombo)" data-flow="top">Consistency : {formatNumber(user.consistency)}</p>
+                    <p data-tooltip="rating + bonus * consistency | This is a custom ranking system to  rate who has the best stats" data-flow="top">Value : {formatNumber(user.val)}</p>
                 </div>
                 <div className="user-score">
                     <p>Notes hit: {formatNumber(user.totalHits)}</p>

@@ -127,8 +127,8 @@ function App() {
         break;
       } case "Bonus": {
         setFilteredUsers([...filteredUsers.sort((a, b) => {
-          const bonusA = 1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01;
-          const bonusB = 1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01;
+          const bonusA = 1 + a.keys4.stats.count_grade_x * 0.2 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01;
+          const bonusB = 1 + b.keys4.stats.count_grade_x * 0.2 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01;
           return o ? bonusA - bonusB : bonusB - bonusA;
         })]);
         break;
