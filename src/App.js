@@ -120,8 +120,8 @@ function App() {
         break;
       } case "Rating": {
         setFilteredUsers([...filteredUsers.sort((a, b) => {
-          const ratingA = a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating;
-          const ratingB = b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating;
+          const ratingA = Math.pow(a.keys4.stats.overall_accuracy / 98, 6) * a.keys4.stats.overall_performance_rating;
+          const ratingB = Math.pow(b.keys4.stats.overall_accuracy / 98, 6) * b.keys4.stats.overall_performance_rating;
           return o ? ratingA - ratingB : ratingB - ratingA;
         })]);
         break;
@@ -141,8 +141,8 @@ function App() {
         break;
       } case "Value": {
         setFilteredUsers([...filteredUsers.sort((a, b) => {
-          const valueA = (a.keys4.stats.overall_accuracy / 100 * a.keys4.stats.overall_performance_rating) + (1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01) * Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
-          const valueB = (b.keys4.stats.overall_accuracy / 100 * b.keys4.stats.overall_performance_rating) + (1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01) * Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
+          const valueA = (Math.pow(a.keys4.stats.overall_accuracy / 98, 6) * a.keys4.stats.overall_performance_rating) + (1 + a.keys4.stats.count_grade_x * 1 + a.keys4.stats.count_grade_ss * 0.05 + a.keys4.stats.count_grade_s * 0.01) * Math.log2(a.keys4.stats.play_count / (a.keys4.stats.fail_count + 1) * a.keys4.stats.max_combo);
+          const valueB = (Math.pow(b.keys4.stats.overall_accuracy / 98, 6) * b.keys4.stats.overall_performance_rating) + (1 + b.keys4.stats.count_grade_x * 1 + b.keys4.stats.count_grade_ss * 0.05 + b.keys4.stats.count_grade_s * 0.01) * Math.log2(b.keys4.stats.play_count / (b.keys4.stats.fail_count + 1) * b.keys4.stats.max_combo);
           return o ? valueA - valueB : valueB - valueA;
         })]);
         break; 
