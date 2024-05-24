@@ -158,10 +158,10 @@ export const ProfileCard = ({data}) => {
                     <p data-tooltip="The total ranked score of the user" data-flow="top">Score : {formatNumber(user.rankedScore)} ({formatNumber(user.playCount)} plays)</p>
                 </div>
                 <div className="user-score">
-                    <p data-tooltip="Math.pow(user.overallAccuracy / 98, 6) * user.overallPerformance" data-flow="top">Rating : {formatNumber(user.rating, 1)}</p>
+                    <p data-tooltip="(Accuracy / 98)⁶ * Performance" data-flow="top">Rating : {formatNumber(user.rating, 1)}</p>
                     <p data-tooltip="X*0.2 + SS*0.05 + S*0.01" data-flow="top">Bonus : {formatNumber(user.bonus, 1)}</p>
-                    <p data-tooltip="Log_2(plays / (fails + 1) * maxCombo)" data-flow="top">Consistency : {formatNumber(user.consistency, 1)}</p>
-                    <p data-tooltip="rating + bonus * consistency | This is a custom ranking system to  rate who has the best stats" data-flow="top">Value : {formatNumber(user.val)}</p>
+                    <p data-tooltip="Log_2(Total Plays / Fails * Max Combo)" data-flow="top">Consistency : {formatNumber(user.consistency, 1)}</p>
+                    <p data-tooltip="Rating + (Bonus * Consistency) | This is a custom ranking system to  rate who has the best stats" data-flow="top">Value : {formatNumber(user.val)}</p>
                 </div>
                 <div className="user-score">
                     <p>Notes hit: {formatNumber(user.totalHits)}</p>

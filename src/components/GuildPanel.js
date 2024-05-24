@@ -51,9 +51,9 @@ export const GuildPanel = ({guildInfo, userList}) => {
         }
     }
 
-    React.useEffect(() => {
-            getGuildStats();
-    }, [guildStats]);
+    // React.useEffect(() => {
+    //         getGuildStats();
+    // }, [guildStats]);
 
     const formatNumber = (number, zeros = 0) => {
         if (number === 0) return "0";

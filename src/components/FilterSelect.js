@@ -1,10 +1,11 @@
 import * as React from "react";
 import { filterUsersCX } from "./context";
 
-export const FilterSelect = ({options, type}) => {
+export const FilterSelect = ({options, type, tooltips = []}) => {
     const filterUsers = React.useContext(filterUsersCX)
     
     React.useEffect(() => {
+        // Reset the current selection to the first child on component initial render
         document.querySelectorAll(".filter-options-container").forEach(e => {
             let alrSelected = false;
             if (e.hasChildNodes()) {
@@ -24,7 +25,7 @@ export const FilterSelect = ({options, type}) => {
             <div className="filter">
                 <span className="filter-title">{type}:</span>
                 <div className="filter-options-container">
-                    {options.map(e => <span className="filter-option" onClick={filterUsers}>{e ? e : "All"}</span>)}
+                    {options.map((e, i) => <span className="filter-option" data-tooltip={tooltips.length > 0 ? tooltips[i] : ""} onClick={filterUsers}>{e ? e : "All"}</span>)}
                 </div>
             </div>
         </>
