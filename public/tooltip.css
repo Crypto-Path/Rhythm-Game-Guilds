@@ -29,7 +29,8 @@
   overflow: hidden;
   padding: 4px 12px;
   border-radius: 9px;
-  background: rgba(120, 120, 120, 0.8);
+  border: 1px solid white;
+  background: rgba(50, 50, 50, 0.9);
   color: #FFFFFF;
   z-index: 99;
   text-shadow: 2px 0px 0px #800000;
