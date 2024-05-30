@@ -13,7 +13,7 @@ export const GuildPanel = ({guildInfo, userList}) => {
         return 0;
     });
 
-    const getGuildStats = () => {
+    const getGuildStats = React.useCallback(() => {
         let tempGuildStats = {
             overallPerformance: 0,
             averagePerformance: 0,
@@ -29,7 +29,6 @@ export const GuildPanel = ({guildInfo, userList}) => {
             totalHits: 0,
             averageHits: 0,
         }
-        
         userList.forEach(user => {
             tempGuildStats.overallPerformance += user.keys4.stats.overall_performance_rating * ( Math.pow(0.95, userList.indexOf(user)) );
             tempGuildStats.averagePerformance += user.keys4.stats.overall_performance_rating / userList.length;
@@ -45,15 +44,12 @@ export const GuildPanel = ({guildInfo, userList}) => {
             tempGuildStats.totalHits += user.keys4.stats.total_marv + user.keys4.stats.total_perf + user.keys4.stats.total_great + user.keys4.stats.total_good + user.keys4.stats.total_okay;
             tempGuildStats.averageHits += ( user.keys4.stats.total_marv + user.keys4.stats.total_perf + user.keys4.stats.total_great + user.keys4.stats.total_good + user.keys4.stats.total_okay ) / userList.length;
         });
+        setGuildStats(tempGuildStats)
+    }, [userList])
 
-        if (tempGuildStats != guildStats) {
-            setGuildStats(tempGuildStats);
-        }
-    }
-
-    // React.useEffect(() => {
-    //         getGuildStats();
-    // }, [guildStats]);
+    React.useEffect(() => {
+            getGuildStats();
+    }, [getGuildStats]);x
 
     const formatNumber = (number, zeros = 0) => {
         if (number === 0) return "0";

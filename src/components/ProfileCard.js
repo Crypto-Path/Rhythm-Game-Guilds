@@ -140,7 +140,7 @@ export const ProfileCard = ({data}) => {
                 <div className="user-info-basic box-shadow">
                     <div className="user-info-id">
                         <img className="user-pfp box-shadow" src={user.pfp} alt="PFP" />
-                        <div id={`status-${user.id}`} className="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div>
+                        {/* <div id={`status-${user.id}`} className="user-status" style={{backgroundColor:"#f00"}} title="Online status is being fetched"></div> */}
                         <a className="user-name" href={user.profile} >
                             {user.username}
                         </a>
