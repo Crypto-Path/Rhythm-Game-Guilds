@@ -69,27 +69,47 @@ export const GuildPanel = ({guildInfo, userList}) => {
         return Math.round(absNumber * Math.pow(10, zeros)) / Math.pow(10, zeros);
     }
 
+    const updateGuildPanelPos = () => {
+        const winHeight = window.innerHeight;
+        const searchContainer = document.querySelector("#search-container");
+        const searchContainerDomRect = searchContainer.getBoundingClientRect();
+        const searchContainerBottom = searchContainerDomRect.bottom;
+
+        const guildBarContentDomRect = document.querySelector("#guildInfoContent").getBoundingClientRect();
+        const guildBarContentTop = guildBarContentDomRect.top;
+        const guildBarContentBottom = guildBarContentDomRect.bottom;
+        
+        const guildBar = document.querySelector("#guildInfo");
+        const guildBarContentHeight = guildBarContentBottom - guildBarContentTop;
+        const spaceRemaining = winHeight - searchContainerBottom;
+        spaceRemaining > 0 && (searchContainerBottom > 0 ? (
+            spaceRemaining - 125 > guildBarContentHeight ?
+                guildBar.setAttribute("style", `height: ${spaceRemaining - 125}px; top: 0px;`) :
+                guildBar.setAttribute("style", `height: ${guildBarContentHeight}px; top: 0px;`)
+            ) :
+            guildBar.setAttribute("style", `height: ${winHeight - 125}px; top: ${spaceRemaining - winHeight}px;`)
+        )
+    }
+
+    window.onscroll = updateGuildPanelPos;
+    window.onresize = updateGuildPanelPos;
+    document.onload = updateGuildPanelPos;
+
     return (
-        /* TODO:  
-         * Have the panel float to the right of the user list
-         * Get guild data and load guild stats
-         * Compare to other Guild option
-         * Switch / Load other guilds ( << ARG >> )? OR make a sorting panel and Guilds be a grouping option
-         */
         <>
         <div id="guildInfo">
             <div className="guild guild-panel box-shadow" id="guildInfoContent">
-                <img className="guild-banner" alt="" src={guildInfo.banner} /> <br/>
-                <span className="guild-name link-like">{guildInfo.name}</span> <br/>
-                <span className="guild-desc link-like">{guildInfo.description}</span> <br/>
-                <span className="guild-subtitle link-like">Stats</span> <br/>
+                <img className="guild-banner" alt="" src={guildInfo.banner} /><br />
+                <span className="guild-name link-like"><strong>{guildInfo.name}</strong></span><br />
+                <span className="guild-desc link-like">{guildInfo.description}</span><br />
+                <span className="guild-subtitle link-like"><strong>Overall Stats</strong></span><br />
                 <div className="guild-container-stats">
-                    <span className="guild-stat link-like">Overall Performance: {formatNumber(Math.floor(guildStats.overallPerformance))} (avg. {formatNumber(Math.floor(guildStats.averagePerformance))})</span> <br/>
-                    <span className="guild-stat">Overall Score: {formatNumber(Math.floor(guildStats.score))} (avg. {formatNumber(Math.floor(guildStats.averageScore))})</span> <br/>
-                    <span className="guild-stat link-like">Overall Accuracy: {Math.floor(guildStats.averageAccuracy*10000)/10000}%</span> <br/>
-                    <span className="guild-stat link-like">Plays Count: {formatNumber(Math.floor(guildStats.totalPlayCount))} (avg. {formatNumber(Math.floor(guildStats.averagePlayCount))})</span> <br/>
-                    <span className="guild-stat link-like">Notes Hit: {formatNumber(Math.floor(guildStats.totalHits))} (avg. {formatNumber(Math.floor(guildStats.averageHits))})</span> <br/>
-                    <span className="guild-stat link-like">Members: {userList.length}</span> <br/>
+                    <span className="guild-stat link-like">Performance: {formatNumber(Math.floor(guildStats.overallPerformance))} (avg. {formatNumber(Math.floor(guildStats.averagePerformance))})</span><br />
+                    <span className="guild-stat link-like">Score: {formatNumber(Math.floor(guildStats.score))} (avg. {formatNumber(Math.floor(guildStats.averageScore))})</span><br />
+                    <span className="guild-stat link-like">Accuracy: {Math.floor(guildStats.averageAccuracy*10000)/10000}%</span><br />
+                    <span className="guild-stat link-like">Play Count: {formatNumber(Math.floor(guildStats.totalPlayCount))} (avg. {formatNumber(Math.floor(guildStats.averagePlayCount))})</span><br />
+                    <span className="guild-stat link-like">Notes Hit: {formatNumber(Math.floor(guildStats.totalHits))} (avg. {formatNumber(Math.floor(guildStats.averageHits))})</span><br />
+                    <span className="guild-stat link-like">Members: {userList.length}</span><br />
                 </div>
             </div>
         </div>

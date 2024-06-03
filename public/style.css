@@ -7,12 +7,14 @@ body {
   align-items: center;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
+  margin: 10px 0;
+  color: #C8C8C8
 }
 
 a, .link-like {
-  color: azure;
+  color: lavender;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -38,9 +40,6 @@ button.disabled-btn {
   flex-wrap: wrap;
 }
 
-/* #Search { /* What were we gonna use this for? *\/
-} */
-
 #Background {
   position: absolute;
   width: 100%;
@@ -57,6 +56,11 @@ button.disabled-btn {
   max-height: calc(100vh);
   overflow-y: auto;
   position: fixed;
+}
+
+.App {
+  text-align: center;
+  max-width: 1200px;
 }
 
 .overlay {
@@ -184,31 +188,35 @@ button.disabled-btn {
 }
 
 #guildInfo {
-  margin-left: 3rem !important;
-  
-  width: 16rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  position: relative;
+  width: 18rem;
   background-color: rgba(127, 127, 127, 0.5);
   border-radius: 2rem;
   margin: 1rem;
+  margin-right: 0;
   padding: 1rem;
-  position: sticky; /* Change position to sticky */
-  top: 20px; /* Adjust top position according to your preference */
   z-index: 1; /* Ensure it appears above other elements */
 }
 
 #guildInfoContent {
-  width: 16rem;
+  display: block;
+  justify-self: space-around;
+  width: 18rem;
   background-color: rgba(25, 25, 25, 0.66);
   border-radius: 2rem;
   padding: 1rem;
   margin: -1rem;
   
   overflow-y: auto;
-  position: fixed; /* Keep the content fixed relative to the viewport */
+  /*position: sticky; */ /* Keep the content fixed relative to the viewport */
 }
 
 .container-guild {
   display: flex;
+  justify-content: space-between;
 }
 
 .guild-name {
@@ -220,7 +228,6 @@ button.disabled-btn {
 
 .guild-subtitle {
   text-decoration: none;
-  float: left;
   font-size: 18px;
   margin-bottom: 0.5rem;
 }
@@ -244,7 +251,6 @@ button.disabled-btn {
 
 .guild-stat {
   text-decoration: none;
-  float: left; 
 }
 
 .flex {
@@ -275,9 +281,33 @@ button.disabled-btn {
   font-size: 1.7rem;
 }
 
+.main-element {
+  padding: 10px 0;
+  margin-top: 25px;
+}
+
+.info-panel {
+  font-size: 1.35rem;
+}
+
+.info-panel p {
+  font-size: 1rem;
+}
+
+.contributions {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.contributions>* {
+  flex: 0 0 50%;
+}
+
 .search-container {
+  padding-top: 0;
   text-align: center;
-  margin-top: 50px;
 
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
   background-color: rgba(127, 127, 127, 0.22);
@@ -285,7 +315,7 @@ button.disabled-btn {
 }
 
 .search-bar-container {
-  padding: 0 5% 0 5%;
+  padding: 0 5%;
 
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
   background-color: rgba(127, 127, 127, 0.22);
@@ -300,7 +330,7 @@ button.disabled-btn {
 }
 
 .filter-title {
-  color: rgb(200, 200, 200);
+  color: #C8C8C8;
   place-self: center end;
 }
 
@@ -315,13 +345,9 @@ button.disabled-btn {
 }
 
 .filter-option:hover {
-  color: rgb(200, 200, 200);
+  color: #C8C8C8;
   cursor: pointer;
   text-decoration: underline;
-}
-
-.filter-container {
-  /*spread out text and fix the searchbar text size!*/
 }
 
 .selected {

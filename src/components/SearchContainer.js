@@ -29,7 +29,7 @@ export const SearchContainer = ({query, setQuery, setResults, guildKeys}) => {
 
     return (
         <>
-            <div className="search-container">
+            <div id="search-container" className="search-container main-element">
                 <SearchBar query={query} setQuery={setQuery} setResults={setResults} />
                 <div className="filter-container">
                     <FilterSelect options={guildKeys} type={"Guild"} />

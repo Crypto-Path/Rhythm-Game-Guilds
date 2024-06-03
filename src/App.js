@@ -1,7 +1,6 @@
 import * as React from "react";
-import './App.css';
 import { apiCall } from "./functions/apiCall";
-import { Background, GuildPanel, ProfileCard, SearchContainer } from "./components/index";
+import { Background, GuildPanel, InfoPanel, ProfileCard, SearchContainer } from "./components/index";
 import { filterUsersCX } from "./components/context";
 
 const getUsersByGuild = async () => {
@@ -210,20 +209,22 @@ function App() {
   return (
     <div className="App">
       <Background />
+      <InfoPanel />
       <filterUsersCX.Provider value={filterUsers}>
         <SearchContainer query={userSearchQuery}
                         setQuery={setUserSearchQuery}
                         setResults={setUserSearchResults}
                         guildKeys={guildKeys.current} />
       </filterUsersCX.Provider>
-      <br />
-      <div className="container-guild">
+      <div className="container-guild main-element">
         <div className="userList">
           {filteredUsers.length > 0 ? (
             filteredUsers.map(user => <ProfileCard key={user.id} data={user} />)
           ) : "error with da users"}
         </div>
-        <GuildPanel guildInfo={guildTemp} userList={filteredUsers}></GuildPanel>
+        <div className="flexprot">
+          <GuildPanel guildInfo={guildTemp} userList={filteredUsers}></GuildPanel>
+        </div>
       </div>
     </div>
   );
