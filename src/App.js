@@ -63,7 +63,12 @@ function App() {
           // Add the guild identifier to the user object:
           Object.keys(guildsData).forEach((g, i) => {
             guildsData[g].Members.forEach((m, mi, ma) => {
-              ma[mi].guild = Object.keys(guildsData)[i]
+              if (typeof ma[mi] === "object") {
+                ma[mi].guild = Object.keys(guildsData)[i]
+              } else {
+                console.debug(`Error with user '${m}. Removed from the userlist.`)
+                ma.splice(mi, 1);
+              }
             })
           })
 
@@ -200,11 +205,25 @@ function App() {
     }
   }
 
+  // Build the guild obj to pass to the GuildPanel later
+
+  const buildGuildPanelObj = async () => {
+    const guildsData = await getUsersByGuild();
+    return {
+      banner: guildsData.Banner,
+      name: guildsData.Name,
+      description: guildsData.Desc
+    };
+    
+  }
+
+  /*
   const guildTemp = {
     banner: "https://api.cyphemercury.online/images/RRG_Banner.png",
     name: "Rhythm Game Guilds",
     description: "Epicer Description"
   }
+  */ 
 
   return (
     <div className="App">
@@ -223,7 +242,7 @@ function App() {
           ) : "error with da users"}
         </div>
         <div className="flexprot">
-          <GuildPanel guildInfo={guildTemp} userList={filteredUsers}></GuildPanel>
+          <GuildPanel guildInfo={buildGuildPanelObj()} userList={filteredUsers}></GuildPanel>
         </div>
       </div>
     </div>
