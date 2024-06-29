@@ -346,8 +346,8 @@ class User {
         this.hgreats = data.keys4.stats.total_great;
         this.hgoods = data.keys4.stats.total_good;
         this.hokays = data.keys4.stats.total_okay;
-        this.hmisss = data.keys4.stats.total_miss;
-        this.totalHits = this.hmarvs + this.hperfs + this.hgreats + this.hgoods + this.hokays + this.hmisss;
+        this.hmisses = data.keys4.stats.total_miss;
+        this.totalHits = this.hmarvs + this.hperfs + this.hgreats + this.hgoods + this.hokays + this.hmisses;
         // Stats
         this.rating = this.overallAccuracy / 100 * this.overallPerformance;
         this.bonus = 1 + this.xRanks * 1 + this.ssRanks * 0.05 + this.sRanks * 0.01;
