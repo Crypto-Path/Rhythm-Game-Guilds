@@ -61,7 +61,7 @@ async function getScores(list = undefined /* Custom user list for "usernames" se
             const url = `${baseUrl}/users/full/${profile.info.username}`;
             const data = profile;
             const user = new User(data, url);
-            user.id = profile.info.username;
+            user.id = profile.info.id;
             users.push(user);
             user.createUserUI();
             guildScore += user.totalScore;
