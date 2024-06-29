@@ -1,0 +1,360 @@
+body {
+  font-family: sans-serif;
+  color: white;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 10px 0;
+  color: #C8C8C8
+}
+
+a, .link-like {
+  color: lavender;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+p {
+  font-size: 12px;
+}
+
+button.disabled-btn {
+  opacity: 0.5;
+  background-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+}
+
+#results {
+  margin-top: 20px;
+  width: 52rem;
+}
+
+#results.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#Background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  filter: blur(10px);
+  z-index: -2;
+  max-height: calc(100vh);
+  overflow-y: auto;
+  position: fixed;
+}
+
+.App {
+  text-align: center;
+  max-width: 1200px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+    z-index: -1; /* Ensure it appears above the background image */
+    max-height: calc(100vh);
+    overflow-y: auto;
+    position: fixed;
+}
+
+.user {
+  width: 48rem;
+  margin-top: 1rem;
+  padding: 6px;
+  background-color: rgba(127, 127, 127, 0.33);
+  border-radius: 1rem;
+
+  transition-duration: 200ms;
+}
+
+.user:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.user.grid {
+  width: 12rem;
+}
+
+.user-info-basic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(75, 75, 75, 0.75);
+  border-radius: 16px;
+}
+
+.user-info-basic.grid {
+  flex-direction: column;
+}
+
+.user-info-id {
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-name {
+  margin: 10px;
+  font-size: 32px;
+}
+
+.user-name.grid {
+  font-size: 24px;
+}
+
+.user-pfp {
+  width: 6rem;
+  border-radius: 1rem;
+}
+
+.user-pfp.grid {
+  width: 12rem;
+  border-radius: 2rem;
+}
+
+.user-guild-tag {
+  font-family: "Courier New";
+  font-size: 32px;
+  font-weight: 550;
+  margin-right: 2rem;
+  color:rgb(130, 130, 130);
+  text-shadow: rgba(180, 180, 180) 1.5px 1.5px;
+}
+
+.user-score {
+  margin-bottom: -16px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.user-status {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  position: relative;
+  left: -5.6rem;
+  top: -2.3rem;
+  border-radius: 1rem;
+}
+
+.box-shadow {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+}
+
+.gone {
+    display: none;
+}
+
+
+/* Style for the buttons */
+.option {
+  padding: 8px 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.option.disable {
+  background-color: #9c9c9c;
+}
+
+.option.active {
+  background-color: #333;
+  color: #fff;
+}
+
+#guildInfo {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  position: relative;
+  width: 18rem;
+  background-color: rgba(127, 127, 127, 0.5);
+  border-radius: 2rem;
+  margin: 1rem;
+  margin-right: 0;
+  padding: 1rem;
+  z-index: 1; /* Ensure it appears above other elements */
+}
+
+#guildInfoContent {
+  display: block;
+  justify-self: space-around;
+  width: 18rem;
+  background-color: rgba(25, 25, 25, 0.66);
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: -1rem;
+  
+  overflow-y: auto;
+  /*position: sticky; */ /* Keep the content fixed relative to the viewport */
+}
+
+.container-guild {
+  display: flex;
+  justify-content: space-between;
+}
+
+.guild-name {
+  text-decoration: none;
+  font-size: 24px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.guild-subtitle {
+  text-decoration: none;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.guild-desc {
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+  line-height: 10px;
+}
+
+.guild-banner {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+}
+
+.guild {
+  text-decoration: none;
+}
+
+.guild-stat {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Search {
+  max-width: 32rem;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 2rem;
+  background-color: rgba(50, 50, 50, 0.5);
+  border-radius: 2rem;
+}
+
+.searchbar {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 10px;
+  padding: 2rem;
+  background-color: rgba(50, 50, 50, 0.5);
+  border-radius: 2rem;
+  color: white;
+  font-size: 1.7rem;
+}
+
+.main-element {
+  padding: 10px 0;
+  margin-top: 25px;
+}
+
+.info-panel {
+  font-size: 1.35rem;
+}
+
+.info-panel p {
+  font-size: 1rem;
+}
+
+.contributions {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.contributions>* {
+  flex: 0 0 50%;
+}
+
+.search-container {
+  padding-top: 0;
+  text-align: center;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+  background-color: rgba(127, 127, 127, 0.22);
+  border-radius: 2rem;
+}
+
+.search-bar-container {
+  padding: 0 5%;
+
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.67);
+  background-color: rgba(127, 127, 127, 0.22);
+  border-radius: 2rem;
+}
+
+.filter {
+  display: grid;
+  grid: 100% / 10% 90%;
+  gap: 16px;
+  font-size: 1.35rem;
+}
+
+.filter-title {
+  color: #C8C8C8;
+  place-self: center end;
+}
+
+.filter-options-container {
+  place-self: center start;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.filter-option {
+  padding-right: 12px;
+}
+
+.filter-option:hover {
+  color: #C8C8C8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.selected {
+  color: #a26370;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1250px) {
+  /* Mobile support */
+}

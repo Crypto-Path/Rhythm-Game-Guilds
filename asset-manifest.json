@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Rhythm-Game-Guilds/static/css/main.e6c13ad2.css",
+    "main.js": "/Rhythm-Game-Guilds/static/js/main.b77cc6c2.js",
+    "static/js/453.2a82e7ac.chunk.js": "/Rhythm-Game-Guilds/static/js/453.2a82e7ac.chunk.js",
+    "index.html": "/Rhythm-Game-Guilds/index.html",
+    "main.e6c13ad2.css.map": "/Rhythm-Game-Guilds/static/css/main.e6c13ad2.css.map",
+    "main.b77cc6c2.js.map": "/Rhythm-Game-Guilds/static/js/main.b77cc6c2.js.map",
+    "453.2a82e7ac.chunk.js.map": "/Rhythm-Game-Guilds/static/js/453.2a82e7ac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.b77cc6c2.js"
+  ]
+}
