@@ -20,16 +20,16 @@ function App() {
     name: "Rhythm Game Guilds",
     description: "Welcome to Rhythm Game Guilds!"
   })
-
+  
   getUsersByGuild().then(res => guildsData.current = res)
   
   React.useEffect(() => {
-    // This function is for adding guild identifiers to searched users
+    // This function is for adding guild identifiers to searched users 336206
     const addGuildKey = (guildsObject, user) => {
       let targetGk = "";
         if (Object.keys(guildsObject).find(gk => {
             targetGk = gk;
-            return guildsObject[gk].Members.find((m, mi, ma) => ma[mi].info.id === user.info.id);
+            return guildsObject[gk].Members.find((m, mi, ma) => ma[mi].info && ma[mi].info.id === user.info.id);
           })) {
           user.guild = targetGk;
         } else {
@@ -55,17 +55,9 @@ function App() {
             })
           })
         } else {    // The below is ran if there is no search query as the "default" return.
-          /* TODO:
-           * [X] Get guild members from either all guilds, or on specific guild
-           * [X] Set up another "class" object thingy? for Listing, Sorting, and Grouping
-           * [X] Listing: What is shown
-           * [X] Sorting: highest to lowest
-           * [X] Grouping: separated into segments ( [Highest to Lowest] 761 921 831 431 )
-           * 
-           * Possibly set up a function that takes the listed users and sorts them so searched users and guilded users can be sorted/grouped the same way
-           * 
-           * Using this as a marker so I can remember where the main guilds listing is
-           */
+          /* 
+            * Using this as a marker so I can remember where the main guilds listing is
+            */
           
           // Add the guild identifier to the user object:
           Object.keys(guildsData.current).forEach((g, i) => {
@@ -88,7 +80,8 @@ function App() {
       }
     };
 
-    fetchUsers();
+      fetchUsers();
+
   }, [userSearchResults]);
 
   // ...Sorts the users. Based on what you click. lol
