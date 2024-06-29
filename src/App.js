@@ -1,6 +1,6 @@
 import * as React from "react";
 import { apiCall } from "./functions/apiCall";
-import { Background, GuildPanel, InfoPanel, ProfileCard, SearchContainer } from "./components/index";
+import { Background, GuildPanel, InfoPanel, Loading, ProfileCard, SearchContainer } from "./components/index";
 import { filterUsersCX } from "./components/context";
 
 const getUsersByGuild = async () => {
@@ -13,7 +13,15 @@ function App() {
   const [userList, setUserList] = React.useState([]);
   const [filteredUsers, setFilteredUsers] = React.useState([]);
   const [sortBy, setSortBy] = React.useState("Username");
-  const guildKeys = React.useRef([])
+  const guildKeys = React.useRef([]);
+  const guildsData = React.useRef({});
+  const guildPanelObj = React.useRef({
+    banner: "https://api.cyphemercury.online/images/RRG_Banner.png",
+    name: "Rhythm Game Guilds",
+    description: "Welcome to Rhythm Game Guilds!"
+  })
+
+  getUsersByGuild().then(res => guildsData.current = res)
   
   React.useEffect(() => {
     // This function is for adding guild identifiers to searched users
@@ -31,14 +39,13 @@ function App() {
 
     const fetchUsers = async () => {
       try {
-        const guildsData = await getUsersByGuild();
-        guildKeys.current = Object.keys(guildsData)
+        guildKeys.current = Object.keys(guildsData.current)
         let usersToAdd = [];
         if (userSearchResults.length > 0) {
           console.log("User Search Results:", userSearchResults)
           usersToAdd = await Promise.all(userSearchResults.map(async elem => {
             const userData = await apiCall(`https://api.quavergame.com/v1/users/full/${elem.id}`);
-            addGuildKey(guildsData, userData.user)
+            addGuildKey(guildsData.current, userData.user)
             return userData.user;
           }));
           document.querySelectorAll(".filter").forEach(e => {
@@ -49,11 +56,11 @@ function App() {
           })
         } else {    // The below is ran if there is no search query as the "default" return.
           /* TODO:
-           * Get guild members from either all guilds, or on specific guild
-           * Set up another "class" object thingy? for Listing, Sorting, and Grouping
-           * - Listing: What is shown
-           * - Sorting: highest to lowest
-           * - Grouping: separated into segments ( [Highest to Lowest] 761 921 831 431 )
+           * [X] Get guild members from either all guilds, or on specific guild
+           * [X] Set up another "class" object thingy? for Listing, Sorting, and Grouping
+           * [X] Listing: What is shown
+           * [X] Sorting: highest to lowest
+           * [X] Grouping: separated into segments ( [Highest to Lowest] 761 921 831 431 )
            * 
            * Possibly set up a function that takes the listed users and sorts them so searched users and guilded users can be sorted/grouped the same way
            * 
@@ -61,10 +68,10 @@ function App() {
            */
           
           // Add the guild identifier to the user object:
-          Object.keys(guildsData).forEach((g, i) => {
-            guildsData[g].Members.forEach((m, mi, ma) => {
+          Object.keys(guildsData.current).forEach((g, i) => {
+            guildsData.current[g].Members.forEach((m, mi, ma) => {
               if (typeof ma[mi] === "object") {
-                ma[mi].guild = Object.keys(guildsData)[i]
+                ma[mi].guild = Object.keys(guildsData.current)[i]
               } else {
                 console.debug(`Error with user '${m}. Removed from the userlist.`)
                 ma.splice(mi, 1);
@@ -72,7 +79,7 @@ function App() {
             })
           })
 
-          usersToAdd = Object.values(guildsData).flatMap(guild => guild.Members);
+          usersToAdd = Object.values(guildsData.current).flatMap(guild => guild.Members);
         }
         setUserList(usersToAdd);
         setFilteredUsers(usersToAdd);
@@ -173,9 +180,11 @@ function App() {
         case "Guild:": {
           switch (value) {
             case "All": {
+              _buildGuildPanelObj("")
               setFilteredUsers(userList);
               break;
             } default: {
+                _buildGuildPanelObj(value)
                 setFilteredUsers(userList.filter(user => user.guild === value));
                 break;
             }
@@ -207,23 +216,13 @@ function App() {
 
   // Build the guild obj to pass to the GuildPanel later
 
-  const buildGuildPanelObj = async () => {
-    const guildsData = await getUsersByGuild();
-    return {
-      banner: guildsData.Banner,
-      name: guildsData.Name,
-      description: guildsData.Desc
+  const _buildGuildPanelObj = (guildKey) => {
+    guildPanelObj.current = {
+      banner: guildsData.current[guildKey].Banner,
+      name: guildsData.current[guildKey].Name,
+      description: guildsData.current[guildKey].Desc
     };
-    
   }
-
-  /*
-  const guildTemp = {
-    banner: "https://api.cyphemercury.online/images/RRG_Banner.png",
-    name: "Rhythm Game Guilds",
-    description: "Epicer Description"
-  }
-  */ 
 
   return (
     <div className="App">
@@ -239,10 +238,10 @@ function App() {
         <div className="userList">
           {filteredUsers.length > 0 ? (
             filteredUsers.map(user => <ProfileCard key={user.id} data={user} />)
-          ) : "error with da users"}
+          ) : <Loading /> }
         </div>
         <div className="flexprot">
-          <GuildPanel guildInfo={buildGuildPanelObj()} userList={filteredUsers}></GuildPanel>
+          <GuildPanel guildInfo={guildPanelObj.current} userList={filteredUsers}></GuildPanel>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import * as React from "react";
 
 export const GuildPanel = ({guildInfo, userList}) => {
     const [guildStats, setGuildStats] = React.useState({});
+    const domParser = new DOMParser();
 
     userList.sort((user1, user2) => {
         if (user1.keys4.stats.overall_performance_rating > user2.keys4.stats.overall_performance_rating) {
@@ -94,6 +95,8 @@ export const GuildPanel = ({guildInfo, userList}) => {
     window.onscroll = updateGuildPanelPos;
     window.onresize = updateGuildPanelPos;
     document.onload = updateGuildPanelPos;
+
+    console.debug(domParser.parseFromString(guildInfo.description, "text/html").body.innerHTML)
 
     return (
         <>
