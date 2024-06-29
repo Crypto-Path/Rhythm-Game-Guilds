@@ -2,7 +2,6 @@ import * as React from "react";
 
 export const GuildPanel = ({guildInfo, userList}) => {
     const [guildStats, setGuildStats] = React.useState({});
-    const domParser = new DOMParser();
 
     userList.sort((user1, user2) => {
         if (user1.keys4.stats.overall_performance_rating > user2.keys4.stats.overall_performance_rating) {
@@ -92,11 +91,46 @@ export const GuildPanel = ({guildInfo, userList}) => {
         )
     }
 
+    const sanitizeHtmlString = unsafeString => {
+        const htmlElementRegex = /(<[^>]+>)/ // matches anything between "<>" to detect html elements
+        const unsafeElementArray = unsafeString.split(htmlElementRegex)
+
+        const elementWhitelist = [
+            "<a>", // allows for link closing tags
+            "<a ", // allows links to have attributes
+            "<br>",
+            "<strong>",
+            "<i>",
+        ]
+        
+        // quick helper function to check if a string starts with any of an array of substrings
+        const startsWithArray = (str, arr) => {
+            return arr.some(substr => str.startsWith(substr))
+        }
+
+        const elementsToRemove = unsafeElementArray.filter(element => {
+            return element.substring(0,1) === "<" &&
+            !startsWithArray(element, elementWhitelist) &&
+            !startsWithArray(element.replace('/', ''), elementWhitelist)            
+        })
+
+        const isLinkClean = element => {
+            const safeElement = /(<a *href="https:[^:]+" *>)/
+            return (element.match(safeElement)) ? true : false
+        }
+
+        const safeElementArray = unsafeElementArray.filter(element => {
+            return (elementsToRemove.indexOf(element) === -1 || (element.startsWith("<a") && !isLinkClean(element)) ? true : false)
+        })
+
+        const sanitizedString = safeElementArray.join("")
+        return sanitizedString;
+    }
+
+
     window.onscroll = updateGuildPanelPos;
     window.onresize = updateGuildPanelPos;
     document.onload = updateGuildPanelPos;
-
-    console.debug(domParser.parseFromString(guildInfo.description, "text/html").body.innerHTML)
 
     return (
         <>
@@ -104,7 +138,7 @@ export const GuildPanel = ({guildInfo, userList}) => {
             <div className="guild guild-panel box-shadow" id="guildInfoContent">
                 <img className="guild-banner" alt="" src={guildInfo.banner} /><br />
                 <span className="guild-name link-like"><strong>{guildInfo.name}</strong></span><br />
-                <span className="guild-desc link-like">{guildInfo.description}</span><br />
+                <span className="guild-desc link-like" dangerouslySetInnerHTML={{__html: sanitizeHtmlString(guildInfo.description)}}></span><br />
                 <span className="guild-subtitle link-like"><strong>Overall Stats</strong></span><br />
                 <div className="guild-container-stats">
                     <span className="guild-stat link-like">Performance: {formatNumber(Math.floor(guildStats.overallPerformance))} (avg. {formatNumber(Math.floor(guildStats.averagePerformance))})</span><br />
